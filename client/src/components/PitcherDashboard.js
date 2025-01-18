@@ -14,7 +14,7 @@ const PitcherDashboard = ({ currentUser }) => {
 
   const fetchInbox = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/inbox/${currentUser.id}`);
+      const response = await fetch(`http://localhost:5002/api/inbox/${currentUser.id}`);
       const data = await response.json();
       setInbox(data.pitches);
     } catch (err) {
@@ -29,7 +29,7 @@ const PitcherDashboard = ({ currentUser }) => {
   const handleCreatePitch = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/pitches', {
+      const response = await fetch('http://localhost:5002/api/pitches', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -55,7 +55,7 @@ const PitcherDashboard = ({ currentUser }) => {
 
   const handleMessageAction = async (pitchId, messageId, action) => {
     try {
-      const response = await fetch('http://localhost:5000/api/messages/handle', {
+      const response = await fetch('http://localhost:5002/api/messages/handle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pitchId, messageId, action }),

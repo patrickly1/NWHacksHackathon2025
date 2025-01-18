@@ -12,7 +12,7 @@ const HomePage = ({ setCurrentUser }) => {
     if (isRegister) {
       // Sign up
       try {
-        const response = await fetch('http://localhost:5000/api/signup', {
+        const response = await fetch('http://localhost:5002/api/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, password, type }),
@@ -29,7 +29,7 @@ const HomePage = ({ setCurrentUser }) => {
     } else {
       // Login
       try {
-        const response = await fetch('http://localhost:5000/api/login', {
+        const response = await fetch('http://localhost:5002/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),
