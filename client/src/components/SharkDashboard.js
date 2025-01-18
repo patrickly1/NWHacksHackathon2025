@@ -7,7 +7,7 @@ const SharkDashboard = ({ currentUser }) => {
   useEffect(() => {
     const fetchPitches = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/pitches');
+        const response = await fetch('http://localhost:5002/api/pitches');
         const data = await response.json();
         setPitches(data);
       } catch (err) {
@@ -22,19 +22,26 @@ const SharkDashboard = ({ currentUser }) => {
   }
 
   const handleSwipeLeft = () => {
-    // Not interested
-    setCurrentPitchIndex((prev) => (prev + 1) % pitches.length);
+    // Skip the current pitch if not interested
+    if (currentPitchIndex < pitches.length - 1) {
+      setCurrentPitchIndex((prev) => prev + 1);
+    } else {
+      alert('You have viewed all pitches!');
+    }
   };
-
+  
   const handleSwipeRight = () => {
-    // Interested
-    const nextIndex = (currentPitchIndex + 1) % pitches.length;
-    setCurrentPitchIndex(nextIndex);
+    // Show the next pitch if interested
+    if (currentPitchIndex < pitches.length - 1) {
+      setCurrentPitchIndex((prev) => prev + 1);
+    } else {
+      alert('You have viewed all pitches!');
+    }
   };
 
   const handleBookmark = async (pitchId) => {
     try {
-      const response = await fetch('http://localhost:5000/api/bookmark', {
+      const response = await fetch('http://localhost:5002/api/bookmark', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sharkId: currentUser.id, pitchId }),
@@ -54,7 +61,7 @@ const SharkDashboard = ({ currentUser }) => {
     const message = prompt('Enter your message to the pitcher:');
     if (message) {
       try {
-        const response = await fetch('http://localhost:5000/api/messages', {
+        const response = await fetch('http://localhost:5002/api/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ pitchId, sharkId: currentUser.id, message }),

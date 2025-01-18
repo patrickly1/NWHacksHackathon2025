@@ -5,14 +5,119 @@
  */
  
 // Example user objects
-// user = { id, type: 'shark' or 'pitcher', name, email, password, bookmarkedPitches = [], messages = []}
-const users = [];
-
-// Example pitch objects
-// pitch = { id, title, videoUrl, companyInfo, ownerId (pitcher), messages = [] }
-const pitches = [];
-
-module.exports = {
-  users,
-  pitches
-};
+const users = [
+    {
+      id: 'user1',
+      type: 'shark',
+      name: 'Mark Cuban',
+      email: 'mark.cuban@gmail.com',
+      password: 'mark123',
+      bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
+      messages: [] // Messages sent to pitchers
+    },
+    {
+      id: 'user2',
+      type: 'pitcher',
+      name: 'Sarah Smith',
+      email: 'sarah.smith@example.com',
+      password: 'sarah123',
+      messages: [] // Messages received from sharks
+    },
+    {
+      id: 'user3',
+      type: 'pitcher',
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      password: 'john123',
+      messages: []
+    },
+    {
+      id: 'user4',
+      type: 'shark',
+      name: 'Barbara Corcoran',
+      email: 'barbara.corcoran@gmail.com',
+      password: 'barbara123',
+      bookmarkedPitches: ['pitch2'],
+      messages: []
+    },
+    {
+      id: 'user5',
+      type: 'pitcher',
+      name: 'Emily Johnson',
+      email: 'emily.johnson@example.com',
+      password: 'emily123',
+      messages: []
+    }
+  ];
+  
+  // Example pitch objects
+  const pitches = [
+    {
+      id: 'pitch1',
+      title: 'Revolutionary AI Startup',
+      videoUrl: 'https://www.example.com/video1.mp4',
+      companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
+      ownerId: 'user2', // Sarah Smith owns this pitch
+      messages: [
+        {
+          id: 'msg1',
+          from: 'user1', // Mark Cuban
+          content: 'I’m interested in learning more about your company!'
+        },
+        {
+          id: 'msg2',
+          from: 'user4', // Barbara Corcoran
+          content: 'This looks promising! Let’s connect.'
+        }
+      ]
+    },
+    {
+      id: 'pitch2',
+      title: 'Eco-Friendly Product',
+      videoUrl: 'https://www.example.com/video2.mp4',
+      companyInfo: 'We create sustainable, eco-friendly household products to reduce waste.',
+      ownerId: 'user3', // John Doe owns this pitch
+      messages: [
+        {
+          id: 'msg3',
+          from: 'user1', // Mark Cuban
+          content: 'How do you plan to scale this?'
+        }
+      ]
+    },
+    {
+      id: 'pitch3',
+      title: 'Fitness App for Home Workouts',
+      videoUrl: 'https://www.example.com/video3.mp4',
+      companyInfo: 'A fitness app focused on providing customized home workout plans.',
+      ownerId: 'user5', // Emily Johnson owns this pitch
+      messages: []
+    },
+    {
+      id: 'pitch4',
+      title: 'Renewable Energy Solutions',
+      videoUrl: 'https://www.example.com/video4.mp4',
+      companyInfo: 'We provide innovative solar energy solutions for residential homes.',
+      ownerId: 'user3', // John Doe owns this pitch
+      messages: []
+    },
+    {
+      id: 'pitch5',
+      title: 'AI-Powered Hiring Platform',
+      videoUrl: 'https://www.example.com/video5.mp4',
+      companyInfo: 'An AI-powered platform to streamline the hiring process for startups.',
+      ownerId: 'user2', // Sarah Smith owns this pitch
+      messages: [
+        {
+          id: 'msg4',
+          from: 'user4', // Barbara Corcoran
+          content: 'Impressive! I’d like to discuss this further.'
+        }
+      ]
+    }
+  ];
+  
+  module.exports = {
+    users,
+    pitches
+  };

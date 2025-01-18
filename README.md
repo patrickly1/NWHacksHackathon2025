@@ -7,6 +7,8 @@
 	•	Then run npm start to start the server.
 	•	The server should run on http://localhost:5001.
 
+- MAKE A SEPARATE TERMINAL
+
 - Client Setup
 	•	Open another terminal and navigate to the client folder.
 	•	Run npm install to install dependencies (React, React Router, etc.).
