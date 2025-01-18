@@ -5,7 +5,7 @@
 	•	Open a terminal and navigate to the server folder.
 	•	Run npm install to install dependencies (express, cors, body-parser).
 	•	Then run npm start to start the server.
-	•	The server should run on http://localhost:5001.
+	•	The server should run on http://localhost:5002.
 
 - MAKE A SEPARATE TERMINAL
 

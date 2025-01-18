@@ -10,10 +10,23 @@ const users = [
       id: 'user1',
       type: 'shark',
       name: 'Mark Cuban',
-      email: 'mark.cuban@gmail.com',
+      email: 'mark.cuban@example.com',
       password: 'mark123',
       bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
-      messages: [] // Messages sent to pitchers
+      messages: [
+        {
+          pitchId: 'pitch1', // ID of the pitch Mark sent a message about
+          to: 'user2', // Sarah Smith (pitcher)
+          content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
+          timestamp: '2025-01-18T10:00:00Z'
+        },
+        {
+          pitchId: 'pitch5',
+          to: 'user2',
+          content: 'Your hiring platform is brilliant! Could you share more details?',
+          timestamp: '2025-01-18T12:00:00Z'
+        }
+      ] // Messages sent to pitchers
     },
     {
       id: 'user2',
@@ -21,7 +34,20 @@ const users = [
       name: 'Sarah Smith',
       email: 'sarah.smith@example.com',
       password: 'sarah123',
-      messages: [] // Messages received from sharks
+      messages: [
+        {
+          from: 'user1', // Mark Cuban (shark)
+          pitchId: 'pitch1',
+          content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
+          timestamp: '2025-01-18T10:00:00Z'
+        },
+        {
+          from: 'user1',
+          pitchId: 'pitch5',
+          content: 'Your hiring platform is brilliant! Could you share more details?',
+          timestamp: '2025-01-18T12:00:00Z'
+        }
+      ] // Messages received from sharks
     },
     {
       id: 'user3',
