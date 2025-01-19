@@ -87,8 +87,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   return (
-    <div id="app">
-      <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
+
+    <div id='app'>
+      {currentUser && <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+      
+
       <Routes>
         {/* Home Page */}
         <Route path="/Home" element={<Home currentUser={currentUser} />} />

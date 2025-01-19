@@ -184,7 +184,51 @@ const SharkDashboard = ({ currentUser }) => {
     if (currentPitchIndex < pitches.length - 1) {
       setCurrentPitchIndex((prev) => prev + 1);
     } else {
-      alert("You have viewed all pitches!");
+
+      alert('You have viewed all pitches!');
+    }
+  };
+
+  const handleSwipeRight = () => {
+    setShowCompanyInfo((prev) => !prev);
+  };
+
+  const handleSwipeLeft = () => {
+    //add bookmark
+  };
+
+  const handleSendMessage = async (pitchId) => {
+    if (!showCompanyInfo) return;
+
+    const message = prompt('Enter your message to the pitcher:');
+    if (message) {
+      try {
+        const response = await fetch('http://localhost:5002/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pitchId, sharkId: currentUser.id, message }),
+        });
+
+        if (response.ok) {
+          alert('Message sent!');
+          // Remove the messaged pitch from the dashboard
+          setPitches((prevPitches) =>
+            prevPitches.filter((pitch) => pitch.id !== pitchId)
+          );
+          setShowCompanyInfo(false);
+
+          // Reset the index to avoid out-of-bounds errors
+          if (currentPitchIndex >= pitches.length - 1) {
+            setCurrentPitchIndex(0);
+          }
+        } else {
+          const data = await response.json();
+          alert(data.message);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+
     }
   };
 
@@ -219,6 +263,9 @@ const SharkDashboard = ({ currentUser }) => {
           style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
         >
           View Pitcher Profile
+        </button>
+        <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+          Swipe left
         </button>
       </div>
     </div>
