@@ -172,8 +172,8 @@ const users = [
     {
       id: 'pitch2',
       title: 'Eco-Friendly Product',
-      caption: 'Make the planet a better place!',
-      videoUrl: 'http://localhost:5002/uploads/0119.mov',
+      caption: 'The most non chalant elevator pitch challange, our version #FundEmAll #nwPlus #AI #tech #TelusSponsorPrice',
+      videoUrl: 'http://localhost:5002/uploads/0119a.mp4',
       companyInfo: 'We create sustainable, eco-friendly household products to reduce waste.',
       ownerId: 'user3', // John Doe owns this pitch
       messages: [
