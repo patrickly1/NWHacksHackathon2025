@@ -173,7 +173,7 @@ const users = [
       id: 'pitch2',
       title: 'Eco-Friendly Product',
       caption: 'Make the planet a better place!',
-      videoUrl: 'https://www.example.com/video2.mp4',
+      videoUrl: 'http://localhost:5002/uploads/0119.mov',
       companyInfo: 'We create sustainable, eco-friendly household products to reduce waste.',
       ownerId: 'user3', // John Doe owns this pitch
       messages: [
