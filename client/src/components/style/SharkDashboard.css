@@ -2,6 +2,8 @@
     min-height: 100vh;
     position: relative;
     padding-bottom: 60px; 
+        background-color: black;
+
   }
   
   .dashboard-title {
@@ -10,6 +12,7 @@
   .button-container {
     height: 100%;
     width: 100%;
+    margin-top: -500px;
   }
   
   #swipeUpBtn {
@@ -71,3 +74,45 @@
     background-color: gray;
     opacity: 0.2;
   }
+
+  #exploreDiv{
+    width: 100%; 
+    height: 100%;
+    color: black;
+  }
+
+  #vidDiv{
+    position: relative; 
+    margin-top: 0px;
+    width: 100%; 
+    height: 100%; 
+
+  }
+
+  video {
+    position: absolute;
+    margin-top: -46px;
+
+    margin-left: -45.5px;
+    
+    width: 122%; 
+  }
+
+  #exploreH{
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 34px;
+    color: rgb(0, 0, 0);
+
+  }
+
+  #captionP{
+    position: relative;
+    margin-bottom: -20px;
+    margin-left: -20px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+}
+  

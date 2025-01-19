@@ -91,8 +91,6 @@ function App() {
 
     <div id='appDiv'>
       {currentUser && <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-      
-
 
       <Routes>
         {/* Home Page */}
