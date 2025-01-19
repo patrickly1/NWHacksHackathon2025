@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import "./style/LoginPage.css";
 
-const HomePage = ({ setCurrentUser }) => {
+
+const LoginPage = ({ setCurrentUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,16 +50,14 @@ const HomePage = ({ setCurrentUser }) => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h1>Shark-Pitch App</h1>
-      <p>Create an account or log in below.</p>
-      <button onClick={() => setIsRegister(!isRegister)}>
-        {isRegister ? 'Already have an account? Log in' : 'Need an account? Sign up'}
-      </button>
+      <h1>{isRegister ? 'Sign-up' : 'Log-in'}</h1>
+      <p>{isRegister ? 'Enter your information.' : 'Log-in'}</p>
+      
 
       <form onSubmit={handleSubmit} style={{ marginTop: '1rem' }}>
         {isRegister && (
           <>
-            <div>
+            <div className='formDiv'>
               <label>Name: </label>
               <input
                 type="text"
@@ -65,17 +65,17 @@ const HomePage = ({ setCurrentUser }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label>Account Type: </label>
               <select value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="shark">Shark</option>
                 <option value="pitcher">Pitcher</option>
               </select>
-            </div>
+            </div> */}
           </>
         )}
 
-        <div>
+        <div className='formDiv'>
           <label>Email: </label>
           <input
             type="email"
@@ -84,7 +84,7 @@ const HomePage = ({ setCurrentUser }) => {
           />
         </div>
 
-        <div>
+        <div className='formDiv'>
           <label>Password: </label>
           <input
             type="password"
@@ -97,8 +97,18 @@ const HomePage = ({ setCurrentUser }) => {
           {isRegister ? 'Sign Up' : 'Log In'}
         </button>
       </form>
+
+<br></br>
+      <div>
+        <p>{isRegister ? 'Already have an account?' : 'Need an account?'}</p>
+        <a onClick={() => setIsRegister(!isRegister)}>
+          {isRegister ? 'Log in' : 'Sign up'}
+        </a>
+      </div>
+
+
     </div>
   );
 };
 
-export default HomePage;
+export default LoginPage;

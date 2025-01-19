@@ -1,0 +1,17 @@
+body {
+    font-family: 'Poppins';
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    height: 874px;
+    width: 402px;
+    padding-left: 40vw;
+}
+  
+  .formDiv label,
+  .formDiv input,
+  button,
+  a {
+    font-family: 'Poppins', sans-serif;
+  }
+
