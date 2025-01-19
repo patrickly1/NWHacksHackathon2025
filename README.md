@@ -1,5 +1,12 @@
 # NWHacksHackathon2025
 
+## Fund 'em All
+Hi! Our app Fund ‘em All is a dynamic platform designed to connect small businesses and entrepreneurs with potential investors. Inspired by the spirit of innovation, we make it easy to pitch ideas, gain support, and turn dreams into reality—all within a simple, engaging interface.
+
+## Prototype Link
+- https://www.figma.com/proto/h4hCmw1YaxHnbKxbQuy1kB/prototype?node-id=0-1&t=7elYZVOuN4sGvxLP-1
+
+## How to Run Locally:
 - Server Setup
 	2.	Server Setup:
 	•	Open a terminal and navigate to the server folder.
