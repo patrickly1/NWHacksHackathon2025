@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import telus from "../assets/telusHome.jpg";
-import warp from "../assets/warp.jpg";
+import fundemall from "../assets/fundemall.png";
 
 const Home = ({ currentUser }) => {
   const [bookmarkedPitches, setBookmarkedPitches] = useState([]);
@@ -61,11 +61,12 @@ const Home = ({ currentUser }) => {
               />
             ) : pitch.ownerId === "user3" ? (
               <img
-                src={warp}
+                src={fundemall}
                 alt="Owner-specific image"
                 style={{
                   maxWidth: "100%", // Ensures it doesn't exceed the container's width
-                  height: "auto", // Maintains the aspect ratio
+                  maxHeight: "200px", // Maintains the aspect ratio
+                  objectFit: "cover",
                 }}
               />
             ) : (

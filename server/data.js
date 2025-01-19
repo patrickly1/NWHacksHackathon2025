@@ -173,9 +173,9 @@ const pitches = [
   },
   {
     id: "pitch2",
-    title: "Warp",
+    title: "Fund 'em All",
     caption:
-      "Discover Warp - A Containers-as-a-Service Platform, high-performance technology that allows you to manage all your cloud resources and containers in one place",
+      "Fund ‘em All is a dynamic platform designed to connect small businesses and entrepreneurs with potential investors.",
     videoUrl: "https://www.example.com/video2.mp4",
     companyInfo:
       "We create sustainable, eco-friendly household products to reduce waste.",
