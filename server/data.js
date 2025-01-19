@@ -7,33 +7,76 @@
 // Example user objects
 const users = [
     {
-      id: 'user1',
-      type: 'shark',
-      name: 'Mark Cuban',
-      email: 'mark.cuban@example.com',
-      password: 'mark123',
-      profilePic: "empty image",
+      id: "user1",
+      type: "shark",
+      name: "Mark Cuban",
+      email: "mark.cuban@example.com",
+      password: "mark123",
+      interests: "77",
+      profilePic: "../client/src/assets/MarkCuban2023.jpg",
       about: "I am a billionaire unlike you",
-      location: "Pittsburgh, Pennsylvania, United States",
+      location: "Pennsylvania, US",
+      smallBusiness: "99+",
+      investmentSize: "$500,000",
+      interestingCategories: [
+        "Arts and Crafts",
+        "Electronics",
+        "Graphic Design Studios",
+        "IT Support Services",
+      ],
       linkedin: "https://www.linkedin.com/in/mark-cuban-06a0755b/",
-      bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
+      bookmarkedPitches: ["pitch1"], // Bookmarked pitch IDs
       messages: [
         {
-          pitchId: 'pitch1', // ID of the pitch Mark sent a message about
-          to: 'user2', // Sarah Smith (pitcher)
-          from: 'Patrick',
-          content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
-          timestamp: '2025-01-18T10:00:00Z'
+          pitchId: "pitch1", // ID of the pitch Mark sent a message about
+          to: "user2", // Sarah Smith (pitcher)
+          from: "Patrick",
+          content:
+            "Hi Sarah, I am really impressed with your AI Startup. Let’s connect!",
+          timestamp: "2025-01-18T10:00:00Z",
+          title: "Telus",
         },
         {
-          pitchId: 'pitch5',
-          to: 'user2',
-          from: 'Patrick',
-          content: 'Your hiring platform is brilliant! Could you share more details?',
-          timestamp: '2025-01-18T12:00:00Z'
-        }
-      ] // Messages sent to pitchers
+          pitchId: "pitch5",
+          to: "user2",
+          from: "Patrick",
+          content:
+            "Your hiring platform is brilliant! Could you share more details?",
+          timestamp: "2025-01-18T12:00:00Z",
+          title: "Fund Em All"
+        },
+      ], // Messages sent to pitchers
     },
+  
+// const users = [
+//     {
+//       id: 'user1',
+//       type: 'shark',
+//       name: 'Mark Cuban',
+//       email: 'mark.cuban@example.com',
+//       password: 'mark123',
+//       profilePic: "empty image",
+//       about: "I am a billionaire unlike you",
+//       location: "Pittsburgh, Pennsylvania, United States",
+//       linkedin: "https://www.linkedin.com/in/mark-cuban-06a0755b/",
+//       bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
+//       messages: [
+//         {
+//           pitchId: 'pitch1', // ID of the pitch Mark sent a message about
+//           to: 'user2', // Sarah Smith (pitcher)
+//           from: 'Patrick',
+//           content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
+//           timestamp: '2025-01-18T10:00:00Z'
+//         },
+//         {
+//           pitchId: 'pitch5',
+//           to: 'user2',
+//           from: 'Patrick',
+//           content: 'Your hiring platform is brilliant! Could you share more details?',
+//           timestamp: '2025-01-18T12:00:00Z'
+//         }
+//       ] // Messages sent to pitchers
+//     },
     {
       id: 'user2',
       type: 'pitcher',
@@ -110,6 +153,7 @@ const users = [
       title: 'Revolutionary AI Startup',
       caption: 'The future of AI is here! #TelusSponsorPrice #nwPlus #AI #tech #Telus',
       videoUrl: 'http://localhost:5002/uploads/Telus_Video.mp4',
+      photo: 'http://localhost:5002/uploads/Telus.svg',
       companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
       ownerId: 'user2', // Sarah Smith owns this pitch
       messages: [
@@ -129,7 +173,7 @@ const users = [
       id: 'pitch2',
       title: 'Eco-Friendly Product',
       caption: 'Make the planet a better place!',
-      videoUrl: 'https://www.example.com/video2.mp4',
+      videoUrl: 'http://localhost:5002/uploads/0119.mov',
       companyInfo: 'We create sustainable, eco-friendly household products to reduce waste.',
       ownerId: 'user3', // John Doe owns this pitch
       messages: [
