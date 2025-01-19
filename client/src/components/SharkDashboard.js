@@ -152,6 +152,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./style/SharkDashboard.css";
 
 
@@ -200,9 +201,9 @@ const SharkDashboard = ({ currentUser }) => {
   const currentPitch = pitches[currentPitchIndex];
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>Pitches</h2>
-      <div>
+    <div id="exploreDiv" style={{ padding: "1rem" }}>
+      
+      {/* <div>
         <strong>Title:</strong> {currentPitch.title}
       </div>
       <div>
@@ -210,18 +211,34 @@ const SharkDashboard = ({ currentUser }) => {
       </div>
       <div>
         <strong>Video URL:</strong> {currentPitch.videoUrl}
+      </div> */}
+
+      
+
+      <div id="vidDiv">
+        <video
+          controls
+          width="100"
+          src={currentPitch.videoUrl}
+          type="video/mp4"
+          autoplay
+          onclick="this.play()"
+          >
+          Your browser does not support the video tag.
+        </video>
+        <h2 id="exploreH">Explore</h2>
+
+        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br>
+
+        <p id="captionP">{currentPitch.caption}</p>
       </div>
-      <video
-        controls
-        width="600"
-        src={currentPitch.videoUrl}
-        autoplay
-        muted
-        loop
-        style={{ marginTop: '10px' }}
-        >
-        Your browser does not support the video tag.
-      </video>
+      
+
+      
+
       <div className="button-container">
         <button id="swipeUpBtn"
           onClick={handleSwipeDown}

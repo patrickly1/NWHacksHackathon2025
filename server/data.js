@@ -108,7 +108,7 @@ const users = [
     {
       id: 'pitch1',
       title: 'Revolutionary AI Startup',
-      caption: 'The future of AI is here!',
+      caption: 'The future of AI is here! #TelusSponsorPrice #nwPlus #AI #tech #Telus',
       videoUrl: 'http://localhost:5002/uploads/Telus_Video.mp4',
       companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
       ownerId: 'user2', // Sarah Smith owns this pitch
