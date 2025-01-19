@@ -6,13 +6,16 @@ import SharkDashboard from './components/SharkDashboard';
 import Messages from './components/Messages';
 import PitcherDashboard from './components/PitcherDashboard';
 import Navigation from './components/Navigation';
+import SelectAcc from './components/SelectAcc';
+import "./components/style/App.css";
+
 
 function App() {
   // We’ll store the current user in App state for simplicity
   const [currentUser, setCurrentUser] = useState(null);
 
   return (
-    <div>
+    <div id='app'>
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         {/* HomePage for signup/login */}

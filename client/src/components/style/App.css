@@ -1,0 +1,29 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+
+
+}
+
+
+#root{
+    height: 874px;
+    width: 402px;
+    color: white;
+}
+
+#HomeLink {
+}
+
+
+  
+  .formDiv label,
+  .formDiv input,
+  button,
+  a {
+    font-family: 'Poppins', sans-serif;
+  }
+

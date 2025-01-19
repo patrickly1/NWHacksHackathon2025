@@ -24,7 +24,7 @@ const users = [
         {
           pitchId: 'pitch5',
           to: 'user2',
-          from: 'Patrick'
+          from: 'Patrick',
           content: 'Your hiring platform is brilliant! Could you share more details?',
           timestamp: '2025-01-18T12:00:00Z'
         }
