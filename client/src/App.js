@@ -17,7 +17,8 @@ function App() {
 
   return (
     <div id='app'>
-      <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      {currentUser && <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+      
       <Routes>
         {/* HomePage for signup/login */}
         <Route path="/" element={<SelectAcc setCurrentUser={setCurrentUser} />} />

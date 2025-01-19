@@ -36,6 +36,10 @@ const SharkDashboard = ({ currentUser }) => {
     setShowCompanyInfo((prev) => !prev);
   };
 
+  const handleSwipeLeft = () => {
+    //add bookmark
+  };
+
   const handleSendMessage = async (pitchId) => {
     if (!showCompanyInfo) return;
 
@@ -113,6 +117,9 @@ const SharkDashboard = ({ currentUser }) => {
         </button>
         <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
           {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+        </button>
+        <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+          Swipe left
         </button>
       </div>
 
