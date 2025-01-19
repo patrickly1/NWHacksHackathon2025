@@ -1,13 +1,13 @@
 // import React, { useEffect, useState } from "react";
 // import { useParams, useNavigate } from "react-router-dom";
 
-// const PitcherProfile = ({ currentUser }) => {
-//   const { pitcherId } = useParams(); // Get pitcherId from URL
+// const PitcherProfile = () => {
+//   const { pitcherId } = useParams();
 //   const [pitcher, setPitcher] = useState(null);
-//   const navigate = useNavigate(); // To navigate back to SharkDashboard
+//   const navigate = useNavigate();
 
 //   useEffect(() => {
-//     const fetchPitcherData = async () => {
+//     const fetchPitcher = async () => {
 //       try {
 //         const response = await fetch(`http://localhost:5002/api/users/${pitcherId}`);
 //         if (response.ok) {
@@ -16,44 +16,13 @@
 //         } else {
 //           console.error("Failed to fetch pitcher data");
 //         }
-//       } catch (err) {
-//         console.error(err);
+//       } catch (error) {
+//         console.error("Error fetching pitcher:", error);
 //       }
 //     };
 
-//     fetchPitcherData();
+//     fetchPitcher();
 //   }, [pitcherId]);
-
-//   const handleSendMessage = async () => {
-//     const message = prompt("Enter your message:");
-//     if (message) {
-//       try {
-//         const response = await fetch(`http://localhost:5002/api/messages`, {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({
-//             senderId: currentUser.id,
-//             senderType: currentUser.type,
-//             recipientId: pitcherId,
-//             message,
-//           }),
-//         });
-
-//         if (response.ok) {
-//           alert("Message sent successfully!");
-//         } else {
-//           const data = await response.json();
-//           alert(`Error: ${data.message}`);
-//         }
-//       } catch (err) {
-//         console.error(err);
-//       }
-//     }
-//   };
-
-//   const handleBackToDashboard = () => {
-//     navigate("/shark"); // Navigate back to SharkDashboard
-//   };
 
 //   if (!pitcher) {
 //     return <div>Loading pitcher profile...</div>;
@@ -82,41 +51,28 @@
 //       >
 //         LinkedIn Profile
 //       </a>
-//       <div style={{ marginTop: "1rem" }}>
-//         <button
-//           onClick={handleSendMessage}
-//           style={{
-//             margin: "0.5rem",
-//             backgroundColor: "lightblue",
-//             padding: "10px",
-//             borderRadius: "5px",
-//             cursor: "pointer",
-//           }}
-//         >
-//           Message {pitcher.name}
-//         </button>
-//         <button
-//           onClick={handleBackToDashboard}
-//           style={{
-//             margin: "0.5rem",
-//             backgroundColor: "lightgrey",
-//             padding: "10px",
-//             borderRadius: "5px",
-//             cursor: "pointer",
-//           }}
-//         >
-//           Back to Explorer
-//         </button>
-//       </div>
+//       <button
+//         onClick={() => navigate("/shark")}
+//         style={{
+//           marginTop: "1rem",
+//           backgroundColor: "lightgrey",
+//           padding: "10px",
+//           borderRadius: "5px",
+//           cursor: "pointer",
+//         }}
+//       >
+//         Back to Explorer
+//       </button>
 //     </div>
 //   );
 // };
 
 // export default PitcherProfile;
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const PitcherProfile = () => {
+const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
   const { pitcherId } = useParams();
   const [pitcher, setPitcher] = useState(null);
   const navigate = useNavigate();
@@ -139,6 +95,42 @@ const PitcherProfile = () => {
     fetchPitcher();
   }, [pitcherId]);
 
+  const handleSendMessage = async () => {
+    const message = prompt(`Enter your message to ${pitcher?.name}:`);
+    if (message) {
+      try {
+        const response = await fetch(`http://localhost:5002/api/messages`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            senderId: currentUser.id,
+            senderType: currentUser.type,
+            recipientId: pitcherId,
+            message,
+          }),
+        });
+
+        if (response.ok) {
+          alert("Message sent successfully!");
+          // Remove the pitch from the SharkDashboard
+          setRemainingPitches((prevPitches) =>
+            prevPitches.filter((pitch) => pitch.ownerId !== pitcherId)
+          );
+          navigate("/shark"); // Redirect to the SharkDashboard
+        } else {
+          const data = await response.json();
+          alert(`Error: ${data.message}`);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  const handleBackToDashboard = () => {
+    navigate("/shark");
+  };
+
   if (!pitcher) {
     return <div>Loading pitcher profile...</div>;
   }
@@ -157,7 +149,9 @@ const PitcherProfile = () => {
           objectFit: "cover",
         }}
       />
-      <p><strong>Location:</strong> {pitcher.location}</p>
+      <p>
+        <strong>Location:</strong> {pitcher.location}
+      </p>
       <a
         href={pitcher.linkedin}
         target="_blank"
@@ -166,21 +160,34 @@ const PitcherProfile = () => {
       >
         LinkedIn Profile
       </a>
-      <button
-        onClick={() => navigate("/shark")}
-        style={{
-          marginTop: "1rem",
-          backgroundColor: "lightgrey",
-          padding: "10px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Back to Explorer
-      </button>
+      <div style={{ marginTop: "1rem" }}>
+        <button
+          onClick={handleSendMessage}
+          style={{
+            margin: "0.5rem",
+            backgroundColor: "lightblue",
+            padding: "10px",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Message {pitcher.name}
+        </button>
+        <button
+          onClick={handleBackToDashboard}
+          style={{
+            margin: "0.5rem",
+            backgroundColor: "lightgrey",
+            padding: "10px",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Back to Explorer
+        </button>
+      </div>
     </div>
   );
 };
 
 export default PitcherProfile;
-
