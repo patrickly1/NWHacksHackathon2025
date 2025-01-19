@@ -1,0 +1,45 @@
+
+
+textarea {
+    width: 90vw;
+    min-width: 100%;
+    border-radius: 15px;
+    min-height: 50px;
+}
+
+p{
+    font-size: 16px;
+    color: black;
+}
+
+#titleDiv{
+    padding-left: -10px;
+    align-items: center;
+    display: flex;
+    gap: 10px; 
+}
+
+#uploadBtn {
+    background-color: rgb(233, 233, 233);
+    border-color: gray;
+    border-style: dashed;
+    width: 95%;
+    height: 250px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#uploadBtn:hover {
+ color: #256AE5;
+ background-color: rgb(227, 227, 227);
+}
+
+#postBtn{
+    margin-top: 30px;
+}
+
+form{
+    text-align: center;
+}

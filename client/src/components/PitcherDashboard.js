@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import "./style/PitcherDashboard.css";
+
 
 const PitcherDashboard = ({ currentUser }) => {
   const [title, setTitle] = useState('');
@@ -56,36 +58,42 @@ const PitcherDashboard = ({ currentUser }) => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2>Pitcher Dashboard</h2>
-      <h3>Create Your Pitch</h3>
+      <h1>Create</h1>
+      <p>Curate your posts to attract them sharks!</p>
       <form onSubmit={handleCreatePitch}>
-        <div>
+        <div id='titleDiv'>
           <label>Title: </label>
           <input 
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder='Enter title'
           />
         </div>
-        <div>
+        {/* <div className='formDiv'>
           <label>Video URL: </label>
           <input
             type="text"
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.target.value)}
           />
-        </div>
-        <div>
-          <label>Caption: </label>
+        </div> */}
+        <button id='uploadBtn'> {/*IMPLEMENT UPLOAD*/}
+          +
+          <br></br>
+          upload media
+        </button>
+        <div className='formDiv'>
           <textarea
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
+            placeholder=' Enter caption'
           />
         </div>
-        <button type="submit">Create Pitch</button>
+        <button id='postBtn' type="submit">Post</button>
       </form>
 
-      <hr />
+     
 
       {/* <h3>Your Pitches</h3>
       {pitches.length === 0 && <div>No pitches yet.</div>}
