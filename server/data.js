@@ -66,6 +66,10 @@ const users = [
       name: 'John Doe',
       email: 'john.doe@example.com',
       password: 'john123',
+      profilePic: "empty image",
+      about: "Bitcoin investor",
+      location: "Vancouver, British Columbia, Canada",
+      linkedin: "https://www.linkedin.com",
       messages: []
     },
     {
@@ -83,8 +87,20 @@ const users = [
       name: 'Emily Johnson',
       email: 'emily.johnson@example.com',
       password: 'emily123',
+      profilePic: "empty image",
+      about: "Tech bubble",
+      location: "San Francisco, California, United States",
+      linkedin: "https://www.linkedin.com",
       messages: []
-    }
+    },
+    {
+        id: 'user6',
+        type: 'pitcher',
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        password: 'john123',
+        messages: []
+      }
   ];
   
   // Example pitch objects
@@ -122,7 +138,14 @@ const users = [
           from: 'user1', // Mark Cuban
           content: 'How do you plan to scale this?'
         }
-      ]
+      ],
+      owner: {
+        id: "user3",
+        name: "Jane Doe",
+        location: "New York, NY",
+        linkedin: "https://www.linkedin.com/in/jane-doe",
+        profilePic: "https://via.placeholder.com/100",
+      },
     },
     {
       id: 'pitch3',

@@ -1,33 +1,190 @@
-import React, { useEffect, useState } from 'react';
-import "./style/SharkDashboard.css";
+// // import React, { useEffect, useState } from "react";
+// // import { useNavigate } from "react-router-dom";
+// // import "./style/SharkDashboard.css";
+
+// // const SharkDashboard = ({ currentUser }) => {
+// //   const [pitches, setPitches] = useState([]);
+// //   const [currentPitchIndex, setCurrentPitchIndex] = useState(0);
+
+// //   const navigate = useNavigate();
+
+// //   useEffect(() => {
+// //     const fetchPitches = async () => {
+// //       try {
+// //         const response = await fetch("http://localhost:5002/api/pitches");
+// //         const data = await response.json();
+// //         setPitches(data);
+// //       } catch (err) {
+// //         console.error(err);
+// //       }
+// //     };
+// //     fetchPitches();
+// //   }, []);
+
+// //   const handleSwipeDown = () => {
+// //     if (currentPitchIndex < pitches.length - 1) {
+// //       setCurrentPitchIndex((prev) => prev + 1);
+// //     } else {
+// //       alert("You have viewed all pitches!");
+// //     }
+// //   };
+
+// //   const handleViewProfile = () => {
+// //     const currentPitch = pitches[currentPitchIndex];
+// //     if (currentPitch?.owner?.id) {
+// //       navigate(`/pitcher-profile/${currentPitch.owner.id}`);
+// //     } else {
+// //       alert("Pitcher profile information is missing.");
+// //     }
+// //   };
+
+// //   if (pitches.length === 0) {
+// //     return <div>No pitches available.</div>;
+// //   }
+
+// //   const currentPitch = pitches[currentPitchIndex];
+
+// //   return (
+// //     <div style={{ padding: "1rem" }}>
+// //       <h2>Shark Dashboard</h2>
+// //       <h3>Current Pitch:</h3>
+// //       <div>
+// //         <strong>Title:</strong> {currentPitch.title}
+// //       </div>
+// //       <div>
+// //         <strong>Caption:</strong> {currentPitch.caption}
+// //       </div>
+// //       <div>
+// //         <strong>Video URL:</strong> {currentPitch.videoUrl}
+// //       </div>
+// //       <div className="button-container">
+// //         <button
+// //           onClick={handleSwipeDown}
+// //           style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
+// //         >
+// //           Next Pitch
+// //         </button>
+// //         <button
+// //           onClick={handleViewProfile}
+// //           style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
+// //         >
+// //           View Pitcher Profile
+// //         </button>
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+// // export default SharkDashboard;
+
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+
+// const SharkDashboard = ({ currentUser }) => {
+//   const [pitches, setPitches] = useState([]);
+//   const [currentPitchIndex, setCurrentPitchIndex] = useState(0);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchPitches = async () => {
+//       try {
+//         const response = await fetch("http://localhost:5002/api/pitches");
+//         const data = await response.json();
+//         setPitches(data);
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     };
+
+//     fetchPitches();
+//   }, []);
+
+//   const handleViewProfile = () => {
+//     const currentPitch = pitches[currentPitchIndex];
+//     navigate(`/pitcher-profile/${currentPitch.ownerId}`);
+//   };
+
+//   const handleSwipeDown = () => {
+//     if (currentPitchIndex < pitches.length - 1) {
+//       setCurrentPitchIndex((prev) => prev + 1);
+//     } else {
+//       alert("You have viewed all pitches!");
+//     }
+//   };
+
+//   if (pitches.length === 0) {
+//     return <div>No pitches available.</div>;
+//   }
+
+//   const currentPitch = pitches[currentPitchIndex];
+
+//   return (
+//     <div style={{ padding: "1rem" }}>
+//       <h2>Shark Dashboard</h2>
+//       <h3>Current Pitch:</h3>
+//       <div>
+//         <strong>Title:</strong> {currentPitch.title}
+//       </div>
+//       <div>
+//         <strong>Caption:</strong> {currentPitch.caption}
+//       </div>
+//       <div>
+//         <strong>Video URL:</strong> {currentPitch.videoUrl}
+//       </div>
+//       <div className="button-container">
+//         <button
+//           onClick={handleSwipeDown}
+//           style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
+//         >
+//           Swipe Down
+//         </button>
+//         <button
+//           onClick={handleViewProfile}
+//           style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
+//         >
+//           View Pitcher Profile
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SharkDashboard;
+
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SharkDashboard = ({ currentUser }) => {
   const [pitches, setPitches] = useState([]);
   const [currentPitchIndex, setCurrentPitchIndex] = useState(0);
-  const [showCompanyInfo, setShowCompanyInfo] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPitches = async () => {
       try {
-        const response = await fetch('http://localhost:5002/api/pitches');
+        const response = await fetch("http://localhost:5002/api/pitches");
         const data = await response.json();
         setPitches(data);
       } catch (err) {
         console.error(err);
       }
     };
+
     fetchPitches();
   }, []);
 
-  if (!currentUser || currentUser.type !== 'shark') {
-    return <div>Please log in as a shark.</div>;
-  }
+  const handleViewProfile = () => {
+    const currentPitch = pitches[currentPitchIndex];
+    navigate(`/pitcher-profile/${currentPitch.ownerId}`, {
+      state: { currentIndex: currentPitchIndex }, // Pass the current index to PitcherProfile
+    });
+  };
 
-  const handleSwipeUp = () => {
+  const handleSwipeDown = () => {
     if (currentPitchIndex < pitches.length - 1) {
       setCurrentPitchIndex((prev) => prev + 1);
-      setShowCompanyInfo(false);
     } else {
+
       alert('You have viewed all pitches!');
     }
   };
@@ -71,6 +228,7 @@ const SharkDashboard = ({ currentUser }) => {
       } catch (err) {
         console.error(err);
       }
+
     }
   };
 
@@ -81,54 +239,35 @@ const SharkDashboard = ({ currentUser }) => {
   const currentPitch = pitches[currentPitchIndex];
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div style={{ padding: "1rem" }}>
       <h2>Shark Dashboard</h2>
       <h3>Current Pitch:</h3>
-
-      {showCompanyInfo ? (
-        <div>
-          <div>
-            <strong>Company Info:</strong> {currentPitch.companyInfo}
-          </div>
-          <button
-            onClick={() => handleSendMessage(currentPitch.id)}
-            style={{ margin: '0.5rem' }}
-          >
-            Send Message
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div>
-            <strong>Title:</strong> {currentPitch.title}
-          </div>
-          <div>
-            <strong>Caption:</strong> {currentPitch.caption}
-          </div>
-          <div>
-            <strong>Video URL:</strong> {currentPitch.videoUrl}
-          </div>
-        </div>
-      )}
-
+      <div>
+        <strong>Title:</strong> {currentPitch.title}
+      </div>
+      <div>
+        <strong>Caption:</strong> {currentPitch.caption}
+      </div>
+      <div>
+        <strong>Video URL:</strong> {currentPitch.videoUrl}
+      </div>
       <div className="button-container">
-        <button id="swipeUpBtn" onClick={handleSwipeUp} style={{ margin: '0.5rem' }}>
-          Swipe Up
+        <button
+          onClick={handleSwipeDown}
+          style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
+        >
+          Swipe Down
         </button>
-        <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
-          {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+        <button
+          onClick={handleViewProfile}
+          style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
+        >
+          View Pitcher Profile
         </button>
         <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
           Swipe left
         </button>
       </div>
-
-      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
-        Swipe Left (Not Interested)
-      </button>
-      <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
-        {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
-      </button> */}
     </div>
   );
 };
