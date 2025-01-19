@@ -77,6 +77,7 @@ import SharkDashboard from './components/SharkDashboard';
 import Messages from './components/Messages';
 import PitcherDashboard from './components/PitcherDashboard';
 import Profile from './components/Profile';
+import PitcherProfile from "./components/PitcherProfile";
 import Home from './components/Home';
 import Navigation from './components/Navigation';
 import SelectAcc from './components/SelectAcc';
@@ -139,6 +140,8 @@ function App() {
             )
           }
         />
+         {/* Add the dynamic route for PitcherProfile */}
+         <Route path="/pitcher-profile/:pitcherId" element={<PitcherProfile />} />
       </Routes>
     </div>
   );
