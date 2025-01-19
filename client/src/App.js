@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import SharkDashboard from './components/SharkDashboard';
 import Messages from './components/Messages';
 import PitcherDashboard from './components/PitcherDashboard';
+import Profile from './components/Profile';
 import Navigation from './components/Navigation';
 import SelectAcc from './components/SelectAcc';
 import "./components/style/App.css";
@@ -43,6 +44,18 @@ function App() {
               <Messages currentUser={currentUser} />
             ) : (
               <div>Please log in to view messages.</div>
+            )
+          }
+        />
+
+        {/* Profile */}
+        <Route
+          path="/profile"
+          element={
+            currentUser ? (
+              <Profile currentUser={currentUser} />
+            ) : (
+              <div>Please log in to view your profile.</div>
             )
           }
         />

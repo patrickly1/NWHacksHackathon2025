@@ -12,6 +12,10 @@ const users = [
       name: 'Mark Cuban',
       email: 'mark.cuban@example.com',
       password: 'mark123',
+      profilePic: "empty image",
+      about: "I am a billionaire unlike you",
+      location: "Pittsburgh, Pennsylvania, United States",
+      linkedin: "https://www.linkedin.com/in/mark-cuban-06a0755b/",
       bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
       messages: [
         {
@@ -36,6 +40,11 @@ const users = [
       name: 'Sarah Smith',
       email: 'sarah.smith@example.com',
       password: 'sarah123',
+      profilePic: "empty image",
+      about: "Started from the bottom now we here",
+      location: "Toronto, Ontario, Canada",
+      linkedin: "https://www.linkedin.com",
+      pitches: ["pitch1", "pitch5"],
       messages: [
         {
           from: 'user1', // Mark Cuban (shark)

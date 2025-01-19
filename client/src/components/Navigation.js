@@ -25,58 +25,54 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
         justifyContent: "space-between",
       }}
     >
-      {/* General Navigation Icons */}
+      {/* Home Icon */}
       <Link to="/">
         <HomeIcon width="24" height="24" fill="white" />
       </Link>
-      <Link to="/shark">
-        <ExploreIcon width="24" height="24" fill="white" />
-      </Link>
-      <Link to="/messages">
-        <InboxIcon width="24" height="24" fill="white" />
-      </Link>
-      <Link to="/profile">
-        <ProfileIcon width="24" height="24" fill="white" />
-      </Link>
 
-      {/* User-Specific Links */}
-      <div style={{ marginLeft: "40px", color: "white" }}>
-        {currentUser && currentUser.type === "shark" && (
-          <>
-            <Link to="/shark" style={{ marginLeft: "1rem" }}>
-              Shark Dashboard
-            </Link>
-            <Link to="/messages" style={{ marginLeft: "1rem" }}>
-              Messages (Shark)
-            </Link>
-          </>
-        )}
-        {currentUser && currentUser.type === "pitcher" && (
-          <>
-            <Link to="/pitcher" style={{ marginLeft: "1rem" }}>
-              Pitcher Dashboard
-            </Link>
-            <Link to="/messages" style={{ marginLeft: "1rem" }}>
-              Messages (Pitcher)
-            </Link>
-          </>
-        )}
-        {currentUser && (
-          <button
-            onClick={handleLogout}
-            style={{
-              marginLeft: "1rem",
-              backgroundColor: "white",
-              color: "black",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            Logout
-          </button>
-        )}
-      </div>
+      {/* Explore Icon for Sharks */}
+      {currentUser && currentUser.type === "shark" && (
+        <Link to="/shark">
+          <ExploreIcon width="24" height="24" fill="white" />
+        </Link>
+      )}
+
+      {/* Explore Icon for Pitchers */}
+      {currentUser && currentUser.type === "pitcher" && (
+        <Link to="/pitcher">
+          <ExploreIcon width="24" height="24" fill="white" />
+        </Link>
+      )}
+
+      {/* Messages Icon */}
+      {currentUser && (
+        <Link to="/messages">
+          <InboxIcon width="24" height="24" fill="white" />
+        </Link>
+      )}
+
+      {/* Profile Icon */}
+      {currentUser && (
+        <Link to="/profile">
+          <ProfileIcon width="24" height="24" fill="white" />
+        </Link>
+      )}
+
+      {/* Logout Button */}
+      {currentUser && (
+        <button
+          onClick={handleLogout}
+          style={{
+            backgroundColor: "white",
+            color: "black",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Logout
+        </button>
+      )}
     </nav>
   );
 };
