@@ -94,6 +94,21 @@ app.post('/api/pitches', (req, res) => {
 });
 
 /**
+ * Fetch user details by pitcherID
+ */
+
+app.get('/api/users/:pitcherId', (req, res) => {
+    const { pitcherId } = req.params;
+    const user = users.find((u) => u.id === pitcherId);
+  
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+  
+    res.status(200).json(user);
+  });
+
+/**
  * 4. Get all pitches (GET /api/pitches)
  *    - For sharks to view or anyone for demonstration
  */
