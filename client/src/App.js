@@ -19,7 +19,9 @@ function App() {
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         {/* HomePage for signup/login */}
-        <Route path="/" element={<LoginPage setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<SelectAcc setCurrentUser={setCurrentUser} />} />
+        {/* LoginPage for signup/login */}
+        <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser} />} />
 
         {/* Shark dashboard */}
         <Route
