@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import LoginPage from './components/LoginPage';
 import SharkDashboard from './components/SharkDashboard';
+import Messages from './components/Messages';
 import PitcherDashboard from './components/PitcherDashboard';
 import Navigation from './components/Navigation';
 import SelectAcc from './components/SelectAcc';
@@ -17,8 +18,8 @@ function App() {
     <div id='app'>
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
+        {/* HomePage for signup/login */}
         <Route path="/" element={<SelectAcc setCurrentUser={setCurrentUser} />} />
-
         {/* LoginPage for signup/login */}
         <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser} />} />
 
@@ -32,6 +33,18 @@ function App() {
         <Route
           path="/pitcher"
           element={<PitcherDashboard currentUser={currentUser} />}
+        />
+
+        {/* Messages */}
+        <Route
+          path="/messages"
+          element={
+            currentUser ? (
+              <Messages currentUser={currentUser} />
+            ) : (
+              <div>Please log in to view messages.</div>
+            )
+          }
         />
       </Routes>
     </div>

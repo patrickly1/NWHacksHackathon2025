@@ -11,57 +11,72 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
   };
 
   return (
-Navbar-Styling
     <nav
       style={{
         height: "60px",
         width: "300px",
         position: "fixed",
         zIndex: "1000",
-        backgroundColor: "Black",
+        backgroundColor: "black",
         borderRadius: "100px",
         display: "flex",
         alignItems: "center",
+        padding: "0 40px",
+        justifyContent: "space-between",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "space-between",
-          paddingLeft: "40px",
-          paddingRight: "40px",
-        }}
-      >
-        <Link to="/">
-          <HomeIcon width="24" height="24" fill="white" />
-        </Link>
-        <Link to="/shark">
-          <ExploreIcon width="24" height="24" fill="white" />
-        </Link>
-        <Link to="/shark">
-          <InboxIcon width="24" height="24" fill="white" />
-        </Link>
-        <Link to="/shark">
-          <ProfileIcon width="24" height="24" fill="white" />
-        </Link>
-      </div>
+      {/* General Navigation Icons */}
+      <Link to="/">
+        <HomeIcon width="24" height="24" fill="white" />
+      </Link>
+      <Link to="/shark">
+        <ExploreIcon width="24" height="24" fill="white" />
+      </Link>
+      <Link to="/messages">
+        <InboxIcon width="24" height="24" fill="white" />
+      </Link>
+      <Link to="/profile">
+        <ProfileIcon width="24" height="24" fill="white" />
+      </Link>
 
-      {currentUser && currentUser.type === "shark" && (
-        <Link to="/shark" style={{ marginLeft: "1rem" }}>
-          Shark Dashboard
-        </Link>
-      )}
-      {currentUser && currentUser.type === "pitcher" && (
-        <Link to="/pitcher" style={{ marginLeft: "1rem" }}>
-          Pitcher Dashboard
-        </Link>
-      )}
-      {currentUser && (
-        <button onClick={handleLogout} style={{ marginLeft: "1rem" }}>
-          Logout
-        </button>
-      )}
+      {/* User-Specific Links */}
+      <div style={{ marginLeft: "40px", color: "white" }}>
+        {currentUser && currentUser.type === "shark" && (
+          <>
+            <Link to="/shark" style={{ marginLeft: "1rem" }}>
+              Shark Dashboard
+            </Link>
+            <Link to="/messages" style={{ marginLeft: "1rem" }}>
+              Messages (Shark)
+            </Link>
+          </>
+        )}
+        {currentUser && currentUser.type === "pitcher" && (
+          <>
+            <Link to="/pitcher" style={{ marginLeft: "1rem" }}>
+              Pitcher Dashboard
+            </Link>
+            <Link to="/messages" style={{ marginLeft: "1rem" }}>
+              Messages (Pitcher)
+            </Link>
+          </>
+        )}
+        {currentUser && (
+          <button
+            onClick={handleLogout}
+            style={{
+              marginLeft: "1rem",
+              backgroundColor: "white",
+              color: "black",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Logout
+          </button>
+        )}
+      </div>
     </nav>
   );
 };
