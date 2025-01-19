@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./style/SharkDashboard.css";
 
 const SharkDashboard = ({ currentUser }) => {
   const [pitches, setPitches] = useState([]);
@@ -22,7 +23,7 @@ const SharkDashboard = ({ currentUser }) => {
     return <div>Please log in as a shark.</div>;
   }
 
-  const handleSwipeLeft = () => {
+  const handleSwipeUp = () => {
     if (currentPitchIndex < pitches.length - 1) {
       setCurrentPitchIndex((prev) => prev + 1);
       setShowCompanyInfo(false);
@@ -106,12 +107,21 @@ const SharkDashboard = ({ currentUser }) => {
         </div>
       )}
 
-      <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+      <div className="button-container">
+        <button id="swipeUpBtn" onClick={handleSwipeUp} style={{ margin: '0.5rem' }}>
+          Swipe Up
+        </button>
+        <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
+          {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+        </button>
+      </div>
+
+      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
         Swipe Left (Not Interested)
       </button>
       <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
         {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,0 +1,53 @@
+.dashboard-container {
+    padding: 1rem;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px; /* Space for fixed buttons */
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  .button-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  #swipeUpBtn {
+    position: fixed;
+    bottom: 0px; /* 20px from the bottom */
+    left: 50%; /* Horizontally center it */
+    transform: translateX(-50%); /* Ensure it's perfectly centered */
+    margin-bottom: 0px;
+    background-color: black;
+    opacity: 0.2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  #swipeUpBtn:hover {
+    background-color: gray;
+    opacity: 0.2;
+  }
+  
+  #swipeRightBtn {
+    position: fixed;
+    top: 50%; 
+    right: 0px; 
+    background-color: black;
+    opacity: 0.2;
+    transform: translateY(-50%) rotate(-90deg); /* Rotate by 90 degrees */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  #swipeRightBtn:hover {
+    background-color: gray;
+    opacity: 0.2;
+  }
