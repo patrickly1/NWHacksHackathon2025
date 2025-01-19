@@ -1,6 +1,5 @@
 // // import React, { useEffect, useState } from "react";
 // // import { useNavigate } from "react-router-dom";
-// // import "./style/SharkDashboard.css";
 
 // // const SharkDashboard = ({ currentUser }) => {
 // //   const [pitches, setPitches] = useState([]);
@@ -153,6 +152,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style/SharkDashboard.css";
+
 
 const SharkDashboard = ({ currentUser }) => {
   const [pitches, setPitches] = useState([]);
@@ -184,53 +185,12 @@ const SharkDashboard = ({ currentUser }) => {
     if (currentPitchIndex < pitches.length - 1) {
       setCurrentPitchIndex((prev) => prev + 1);
     } else {
-
-      alert('You have viewed all pitches!');
+      alert("You have viewed all pitches!");
     }
-  };
-
-  const handleSwipeRight = () => {
-    setShowCompanyInfo((prev) => !prev);
   };
 
   const handleSwipeLeft = () => {
-    //add bookmark
-  };
-
-
-  const handleSendMessage = async (pitchId) => {
-    if (!showCompanyInfo) return;
-
-    const message = prompt('Enter your message to the pitcher:');
-    if (message) {
-      try {
-        const response = await fetch('http://localhost:5002/api/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pitchId, sharkId: currentUser.id, message }),
-        });
-
-        if (response.ok) {
-          alert('Message sent!');
-          // Remove the messaged pitch from the dashboard
-          setPitches((prevPitches) =>
-            prevPitches.filter((pitch) => pitch.id !== pitchId)
-          );
-          setShowCompanyInfo(false);
-
-          // Reset the index to avoid out-of-bounds errors
-          if (currentPitchIndex >= pitches.length - 1) {
-            setCurrentPitchIndex(0);
-          }
-        } else {
-          const data = await response.json();
-          alert(data.message);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-
-    }
+    //add to bookmark
   };
 
   if (pitches.length === 0) {
@@ -241,65 +201,34 @@ const SharkDashboard = ({ currentUser }) => {
 
   return (
     <div style={{ padding: "1rem" }}>
-
-      {showProfile ? (
-        <PitcherProfile
-          pitcher={currentPitch.owner} // Assuming each pitch has an `owner` object
-          onSendMessage={handleSendMessage}
-          onSwipeLeft={handleSwipeLeft}
-          onSwipeDown={handleSwipeDown}
-        />
-      ) : (
-        <div>
-          <h2>Shark Dashboard</h2>
-          <h3>Current Pitch:</h3>
-          <div>
-            <strong>Title:</strong> {currentPitch.title}
-          </div>
-          <div>
-            <strong>Caption:</strong> {currentPitch.caption}
-          </div>
-          <div>
-            <strong>Video URL:</strong> {currentPitch.videoUrl}
-          </div>
-          <div className="button-container">
-            <button
-              onClick={handleSwipeDown}
-              style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
-            >
-              Next Pitch
-            </button>
-            <button
-              onClick={handleSwipeRight}
-              style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
-            >
-              View Pitcher Profile
-            </button>
-          </div>
-        </div>
-      )}
-
+      <h2>Shark Dashboard</h2>
+      <h3>Current Pitch:</h3>
+      <div>
+        <strong>Title:</strong> {currentPitch.title}
+      </div>
+      <div>
+        <strong>Caption:</strong> {currentPitch.caption}
+      </div>
+      <div>
+        <strong>Video URL:</strong> {currentPitch.videoUrl}
+      </div>
       <div className="button-container">
-        <button id="swipeUpBtn" onClick={handleSwipeDown} style={{ margin: '0.5rem' }}>
-          Swipe Up
+        <button id="swipeUpBtn"
+          onClick={handleSwipeDown}
+        >
+          Swipe Down
         </button>
-        <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
-          {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+        <button id="swipeRightBtn"
+          onClick={handleViewProfile}
+        >
+          Swipe Right
+        </button>
 
-        </button>
         <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
           Swipe left
         </button>
+
       </div>
-
-
-      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
-        Swipe Left (Not Interested)
-      </button>
-      <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
-        {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
-      </button> */}
-
     </div>
   );
 };
