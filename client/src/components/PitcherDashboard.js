@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const PitcherDashboard = ({ currentUser }) => {
   const [title, setTitle] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
-  const [companyInfo, setCompanyInfo] = useState([]);
+  const [caption, setCaption] = useState([]);
   const [pitches, setPitches] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const PitcherDashboard = ({ currentUser }) => {
         body: JSON.stringify({
           title,
           videoUrl,
-          companyInfo,
+          caption,
           ownerId: currentUser.id,
         }),
       });
@@ -43,7 +43,7 @@ const PitcherDashboard = ({ currentUser }) => {
         alert('Pitch created!');
         setTitle('');
         setVideoUrl('');
-        setCompanyInfo('');
+        setCaption('');
         fetchInbox(); // Refresh pitches after creating a new one
       } else {
         const data = await response.json();
@@ -76,10 +76,10 @@ const PitcherDashboard = ({ currentUser }) => {
           />
         </div>
         <div>
-          <label>Company Info: </label>
+          <label>Caption: </label>
           <textarea
-            value={companyInfo}
-            onChange={(e) => setCompanyInfo(e.target.value)}
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
           />
         </div>
         <button type="submit">Create Pitch</button>
