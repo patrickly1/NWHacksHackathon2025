@@ -151,6 +151,7 @@ const users = [
       title: 'Revolutionary AI Startup',
       caption: 'The future of AI is here!',
       videoUrl: 'http://localhost:5002/uploads/Telus_Video.mp4',
+      photo: 'http://localhost:5002/uploads/Telus.svg',
       companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
       ownerId: 'user2', // Sarah Smith owns this pitch
       messages: [
