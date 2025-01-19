@@ -12,9 +12,13 @@ const SelectAcc = ({ setCurrentUser }) => {
 
   return (
     <div id="selectAccDiv">
+      <h1>Sign-Up</h1>
+      
+      <p>Choose an account type below:</p>
+      <br></br><br></br><br></br><br></br><br></br>
       <button className="selectAccBtn" id="PitcherBtn" onClick={() => handleAccountType('pitcher')}>
         Pitcher
-      </button>
+      </button><br></br>
       <button className="selectAccBtn" id="SharkBtn" onClick={() => handleAccountType('shark')}>
         Shark
       </button>
