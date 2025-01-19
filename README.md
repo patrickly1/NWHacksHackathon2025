@@ -4,7 +4,7 @@ Our app Fund ‘em All is a dynamic platform designed to connect small businesse
 _**Fund 'em All: big or small, we back 'em all! :)**_
 
 ## Prototype Link
-https://www.figma.com/proto/h4hCmw1YaxHnbKxbQuy1kB/prototype?node-id=0-1&t=7elYZVOuN4sGvxLP-1
+[https://www.figma.com/proto/h4hCmw1YaxHnbKxbQuy1kB/prototype?node-id=0-1&t=7elYZVOuN4sGvxLP-1](https://www.figma.com/proto/h4hCmw1YaxHnbKxbQuy1kB/prototype?node-id=0-1&t=7elYZVOuN4sGvxLP-1)
 
 ## How to Run Locally:
 - Server Setup
