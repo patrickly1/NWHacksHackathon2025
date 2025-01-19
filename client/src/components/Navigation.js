@@ -8,7 +8,7 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
 
   return (
     <nav style={{ borderBottom: '1px solid #ccc', marginBottom: '1rem' }}>
-      <Link to="/">Home</Link>
+      <Link id='HomeLink' to="/">Home</Link>
       {currentUser && currentUser.type === 'shark' && (
         <Link to="/shark" style={{ marginLeft: '1rem' }}>
           Shark Dashboard

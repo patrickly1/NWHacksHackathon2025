@@ -1,12 +1,24 @@
 body {
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     background-color: black;
+
     display: flex;
     justify-content: center;
+
+
+}
+
+
+#root{
     height: 874px;
     width: 402px;
-    padding-left: 40vw;
+    color: white;
 }
+
+#HomeLink {
+}
+
+
   
   .formDiv label,
   .formDiv input,

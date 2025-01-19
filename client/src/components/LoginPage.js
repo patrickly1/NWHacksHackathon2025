@@ -49,7 +49,7 @@ const LoginPage = ({ setCurrentUser }) => {
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div>
       <h1>{isRegister ? 'Sign-up' : 'Log-in'}</h1>
       <p>{isRegister ? 'Enter your information.' : 'Log-in'}</p>
       
@@ -63,6 +63,7 @@ const LoginPage = ({ setCurrentUser }) => {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                placeholder='Enter name'
               />
             </div>
             {/* <div>
@@ -81,6 +82,7 @@ const LoginPage = ({ setCurrentUser }) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Enter email'
           />
         </div>
 
@@ -90,6 +92,7 @@ const LoginPage = ({ setCurrentUser }) => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Enter password'
           />
         </div>
 
