@@ -109,7 +109,7 @@ const users = [
       id: 'pitch1',
       title: 'Revolutionary AI Startup',
       caption: 'The future of AI is here!',
-      videoUrl: 'https://www.example.com/video1.mp4',
+      videoUrl: 'http://localhost:5002/uploads/Telus_Video.mp4',
       companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
       ownerId: 'user2', // Sarah Smith owns this pitch
       messages: [

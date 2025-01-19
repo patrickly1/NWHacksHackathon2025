@@ -201,8 +201,7 @@ const SharkDashboard = ({ currentUser }) => {
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>Shark Dashboard</h2>
-      <h3>Current Pitch:</h3>
+      <h2>Pitches</h2>
       <div>
         <strong>Title:</strong> {currentPitch.title}
       </div>
@@ -212,6 +211,17 @@ const SharkDashboard = ({ currentUser }) => {
       <div>
         <strong>Video URL:</strong> {currentPitch.videoUrl}
       </div>
+      <video
+        controls
+        width="600"
+        src={currentPitch.videoUrl}
+        autoplay
+        muted
+        loop
+        style={{ marginTop: '10px' }}
+        >
+        Your browser does not support the video tag.
+      </video>
       <div className="button-container">
         <button id="swipeUpBtn"
           onClick={handleSwipeDown}
