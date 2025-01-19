@@ -417,7 +417,7 @@ const users = [
       title: "Fund 'em All",
       caption:
         "Fund ‘em All is a dynamic platform designed to connect small businesses and entrepreneurs with potential investors.",
-      videoUrl: "https://www.example.com/video2.mp4",
+      videoUrl: "http://localhost:5002/uploads/0119a.mp4",
       companyInfo:
         "We create sustainable, eco-friendly household products to reduce waste.",
       ownerId: "user3", // John Doe owns this pitch
