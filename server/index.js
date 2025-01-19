@@ -106,34 +106,40 @@ app.get('/api/pitches', (req, res) => {
  *    - Body: { pitchId, sharkId, message }
  */
 app.post('/api/messages', (req, res) => {
-  const { pitchId, sharkId, message } = req.body;
-
-  if (!pitchId || !sharkId || !message) {
-    return res.status(400).json({ message: 'Missing required fields' });
-  }
-
-  // Find pitch
-  const pitch = pitches.find((p) => p.id === pitchId);
-  if (!pitch) {
-    return res.status(404).json({ message: 'Pitch not found' });
-  }
-
-  // Check if user is indeed a shark
-  const sharkUser = users.find((u) => u.id === sharkId && u.type === 'shark');
-  if (!sharkUser) {
-    return res.status(400).json({ message: 'User must be a valid shark account' });
-  }
-
-  // Add message to pitch's messages array
-  // In a real application, you'd probably store messages in a separate structure
-  pitch.messages.push({
-    id: Date.now().toString(),
-    from: sharkUser.id,
-    content: message
+    const { pitchId, sharkId, message } = req.body;
+  
+    if (!pitchId || !sharkId || !message) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+  
+    // Find the pitch
+    const pitch = pitches.find((p) => p.id === pitchId);
+    if (!pitch) {
+      return res.status(404).json({ message: 'Pitch not found' });
+    }
+  
+    // Find the shark
+    const sharkUser = users.find((u) => u.id === sharkId && u.type === 'shark');
+    if (!sharkUser) {
+      return res.status(400).json({ message: 'Invalid shark account' });
+    }
+  
+    // Create the message
+    const newMessage = {
+      id: Date.now().toString(),
+      from: sharkUser.name, // Shark's name
+      pitchId: pitchId,
+      content: message
+    };
+  
+    // Add the message to the pitch's messages array
+    pitch.messages.push(newMessage);
+  
+    // Add the message to the shark's messages array
+    sharkUser.messages.push(newMessage);
+  
+    res.status(201).json({ message: 'Message sent successfully', pitch });
   });
-
-  res.status(201).json({ message: 'Message sent successfully', pitch });
-});
 
 /**
  * 6. Shark bookmarks a pitch (POST /api/bookmark)
@@ -159,23 +165,53 @@ app.post('/api/bookmark', (req, res) => {
 });
 
 /**
+ * Fetch messages for a user (GET /api/messages/:userId)
+ * - If the user is a shark, return their sent messages
+ * - If the user is a pitcher, return messages for their pitches
+ */
+app.get('/api/messages/:userId', (req, res) => {
+    const { userId } = req.params;
+  
+    // Find the user
+    const user = users.find((u) => u.id === userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    if (user.type === 'shark') {
+      // Return messages sent by the shark
+      return res.status(200).json({ messages: user.messages });
+    }
+  
+    if (user.type === 'pitcher') {
+      // Return messages associated with the pitcher's pitches
+      const pitcherPitches = pitches.filter((p) => p.ownerId === userId);
+      const receivedMessages = pitcherPitches.flatMap((p) => p.messages);
+  
+      return res.status(200).json({ messages: receivedMessages });
+    }
+  
+    return res.status(400).json({ message: 'Invalid user type' });
+  });
+
+/**
  * 7. Pitcher fetches messages (GET /api/inbox/:pitcherId)
  *    - Return pitches that belong to pitcher with their messages
  */
 app.get('/api/inbox/:pitcherId', (req, res) => {
-  const { pitcherId } = req.params;
-
-  const pitcher = users.find((u) => u.id === pitcherId && u.type === 'pitcher');
-  if (!pitcher) {
-    return res.status(400).json({ message: 'Invalid pitcher account' });
-  }
-
-  // Find pitches that belong to pitcher
-  const pitcherPitches = pitches.filter((p) => p.ownerId === pitcherId);
-
-  // Return messages from these pitches
-  res.status(200).json({ pitches: pitcherPitches });
-});
+    const { pitcherId } = req.params;
+  
+    const pitcher = users.find((u) => u.id === pitcherId && u.type === 'pitcher');
+    if (!pitcher) {
+      return res.status(400).json({ message: 'Invalid pitcher account' });
+    }
+  
+    // Get all messages for the pitches owned by this pitcher
+    const pitcherPitches = pitches.filter((p) => p.ownerId === pitcherId);
+    const messages = pitcherPitches.flatMap((p) => p.messages);
+  
+    res.status(200).json({ messages });
+  });
 
 /**
  * 8. Pitcher can respond to message (DELETE or something similar)

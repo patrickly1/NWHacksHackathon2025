@@ -17,12 +17,14 @@ const users = [
         {
           pitchId: 'pitch1', // ID of the pitch Mark sent a message about
           to: 'user2', // Sarah Smith (pitcher)
+          from: 'Patrick',
           content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
           timestamp: '2025-01-18T10:00:00Z'
         },
         {
           pitchId: 'pitch5',
           to: 'user2',
+          from: 'Patrick'
           content: 'Your hiring platform is brilliant! Could you share more details?',
           timestamp: '2025-01-18T12:00:00Z'
         }

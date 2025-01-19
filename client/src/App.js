@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import HomePage from './components/LoginPage';
+import LoginPage from './components/LoginPage';
 import SharkDashboard from './components/SharkDashboard';
+import Messages from './components/Messages';
 import PitcherDashboard from './components/PitcherDashboard';
 import Navigation from './components/Navigation';
 
@@ -15,7 +16,7 @@ function App() {
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         {/* HomePage for signup/login */}
-        <Route path="/" element={<HomePage setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<LoginPage setCurrentUser={setCurrentUser} />} />
 
         {/* Shark dashboard */}
         <Route
@@ -27,6 +28,18 @@ function App() {
         <Route
           path="/pitcher"
           element={<PitcherDashboard currentUser={currentUser} />}
+        />
+
+        {/* Messages */}
+        <Route
+          path="/messages"
+          element={
+            currentUser ? (
+              <Messages currentUser={currentUser} />
+            ) : (
+              <div>Please log in to view messages.</div>
+            )
+          }
         />
       </Routes>
     </div>

@@ -10,14 +10,24 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
     <nav style={{ borderBottom: '1px solid #ccc', marginBottom: '1rem' }}>
       <Link to="/">Home</Link>
       {currentUser && currentUser.type === 'shark' && (
-        <Link to="/shark" style={{ marginLeft: '1rem' }}>
-          Shark Dashboard
-        </Link>
+        <>
+          <Link to="/shark" style={{ marginLeft: '1rem' }}>
+            Shark Dashboard
+          </Link>
+          <Link to="/messages" style={{ marginLeft: '1rem' }}>
+            Messages (Shark)
+          </Link>
+        </>
       )}
       {currentUser && currentUser.type === 'pitcher' && (
-        <Link to="/pitcher" style={{ marginLeft: '1rem' }}>
-          Pitcher Dashboard
-        </Link>
+        <>
+          <Link to="/pitcher" style={{ marginLeft: '1rem' }}>
+            Pitcher Dashboard
+          </Link>
+          <Link to="/messages" style={{ marginLeft: '1rem' }}>
+            Messages (Pitcher)
+          </Link>
+        </>
       )}
       {currentUser && (
         <button onClick={handleLogout} style={{ marginLeft: '1rem' }}>
