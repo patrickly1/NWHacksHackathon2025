@@ -14,3 +14,4 @@
 	•	Run npm install to install dependencies (React, React Router, etc.).
 	•	Then run npm start.
 	•	The React application should be accessible at http://localhost:3000.
+https://www.figma.com/proto/h4hCmw1YaxHnbKxbQuy1kB/prototype?node-id=92-443&t=5inOyTTEprIvXedQ-1
