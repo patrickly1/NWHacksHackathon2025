@@ -11,7 +11,6 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
   };
 
   return (
-Navbar-Styling
     <nav
       style={{
         height: "60px",
@@ -22,6 +21,7 @@ Navbar-Styling
         borderRadius: "100px",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <div
@@ -29,39 +29,25 @@ Navbar-Styling
           display: "flex",
           width: "100%",
           justifyContent: "space-between",
+          alignItems: "center",
           paddingLeft: "40px",
           paddingRight: "40px",
+          backgroundColor: "transparent",
         }}
       >
         <Link to="/">
           <HomeIcon width="24" height="24" fill="white" />
         </Link>
-        <Link to="/shark">
+        <Link to="/explore">
           <ExploreIcon width="24" height="24" fill="white" />
         </Link>
-        <Link to="/shark">
+        <Link to="/inbox">
           <InboxIcon width="24" height="24" fill="white" />
         </Link>
-        <Link to="/shark">
+        <Link to="/profile">
           <ProfileIcon width="24" height="24" fill="white" />
         </Link>
       </div>
-
-      {currentUser && currentUser.type === "shark" && (
-        <Link to="/shark" style={{ marginLeft: "1rem" }}>
-          Shark Dashboard
-        </Link>
-      )}
-      {currentUser && currentUser.type === "pitcher" && (
-        <Link to="/pitcher" style={{ marginLeft: "1rem" }}>
-          Pitcher Dashboard
-        </Link>
-      )}
-      {currentUser && (
-        <button onClick={handleLogout} style={{ marginLeft: "1rem" }}>
-          Logout
-        </button>
-      )}
     </nav>
   );
 };
