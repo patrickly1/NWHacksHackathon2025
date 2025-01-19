@@ -84,6 +84,8 @@ function App() {
     <div>
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
+
+        
         {/* Home Page */}
         <Route path="/Home" element={<Home currentUser={currentUser} />} />
 
