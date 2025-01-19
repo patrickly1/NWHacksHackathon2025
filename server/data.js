@@ -7,33 +7,74 @@
 // Example user objects
 const users = [
     {
-      id: 'user1',
-      type: 'shark',
-      name: 'Mark Cuban',
-      email: 'mark.cuban@example.com',
-      password: 'mark123',
-      profilePic: "empty image",
+      id: "user1",
+      type: "shark",
+      name: "Mark Cuban",
+      email: "mark.cuban@example.com",
+      password: "mark123",
+      interests: "77",
+      profilePic: "../client/src/assets/MarkCuban2023.jpg",
       about: "I am a billionaire unlike you",
-      location: "Pittsburgh, Pennsylvania, United States",
+      location: "Pennsylvania, US",
+      smallBusiness: "99+",
+      investmentSize: "$500,000",
+      interestingCategories: [
+        "Arts and Crafts",
+        "Electronics",
+        "Graphic Design Studios",
+        "IT Support Services",
+      ],
       linkedin: "https://www.linkedin.com/in/mark-cuban-06a0755b/",
-      bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
+      bookmarkedPitches: ["pitch1"], // Bookmarked pitch IDs
       messages: [
         {
-          pitchId: 'pitch1', // ID of the pitch Mark sent a message about
-          to: 'user2', // Sarah Smith (pitcher)
-          from: 'Patrick',
-          content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
-          timestamp: '2025-01-18T10:00:00Z'
+          pitchId: "pitch1", // ID of the pitch Mark sent a message about
+          to: "user2", // Sarah Smith (pitcher)
+          from: "Patrick",
+          content:
+            "Hi Sarah, I am really impressed with your AI Startup. Let’s connect!",
+          timestamp: "2025-01-18T10:00:00Z",
         },
         {
-          pitchId: 'pitch5',
-          to: 'user2',
-          from: 'Patrick',
-          content: 'Your hiring platform is brilliant! Could you share more details?',
-          timestamp: '2025-01-18T12:00:00Z'
-        }
-      ] // Messages sent to pitchers
+          pitchId: "pitch5",
+          to: "user2",
+          from: "Patrick",
+          content:
+            "Your hiring platform is brilliant! Could you share more details?",
+          timestamp: "2025-01-18T12:00:00Z",
+        },
+      ], // Messages sent to pitchers
     },
+  
+// const users = [
+//     {
+//       id: 'user1',
+//       type: 'shark',
+//       name: 'Mark Cuban',
+//       email: 'mark.cuban@example.com',
+//       password: 'mark123',
+//       profilePic: "empty image",
+//       about: "I am a billionaire unlike you",
+//       location: "Pittsburgh, Pennsylvania, United States",
+//       linkedin: "https://www.linkedin.com/in/mark-cuban-06a0755b/",
+//       bookmarkedPitches: ['pitch1'], // Bookmarked pitch IDs
+//       messages: [
+//         {
+//           pitchId: 'pitch1', // ID of the pitch Mark sent a message about
+//           to: 'user2', // Sarah Smith (pitcher)
+//           from: 'Patrick',
+//           content: 'Hi Sarah, I am really impressed with your AI Startup. Let’s connect!',
+//           timestamp: '2025-01-18T10:00:00Z'
+//         },
+//         {
+//           pitchId: 'pitch5',
+//           to: 'user2',
+//           from: 'Patrick',
+//           content: 'Your hiring platform is brilliant! Could you share more details?',
+//           timestamp: '2025-01-18T12:00:00Z'
+//         }
+//       ] // Messages sent to pitchers
+//     },
     {
       id: 'user2',
       type: 'pitcher',
