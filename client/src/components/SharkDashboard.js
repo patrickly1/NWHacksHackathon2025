@@ -19,10 +19,6 @@ const SharkDashboard = ({ currentUser }) => {
     fetchPitches();
   }, []);
 
-  if (!currentUser || currentUser.type !== 'shark') {
-    return <div>Please log in as a shark.</div>;
-  }
-
   const handleSwipeUp = () => {
     if (currentPitchIndex < pitches.length - 1) {
       setCurrentPitchIndex((prev) => prev + 1);
@@ -39,24 +35,27 @@ const SharkDashboard = ({ currentUser }) => {
   const handleSendMessage = async (pitchId) => {
     if (!showCompanyInfo) return;
 
-    const message = prompt('Enter your message to the pitcher:');
+    const message = prompt('Enter your message:');
     if (message) {
       try {
         const response = await fetch('http://localhost:5002/api/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pitchId, sharkId: currentUser.id, message }),
+          body: JSON.stringify({
+            pitchId,
+            senderId: currentUser.id, // Use "senderId" to represent both sharks and pitchers
+            senderType: currentUser.type, // Include user type in the request
+            message,
+          }),
         });
 
         if (response.ok) {
           alert('Message sent!');
-          // Remove the messaged pitch from the dashboard
           setPitches((prevPitches) =>
             prevPitches.filter((pitch) => pitch.id !== pitchId)
           );
           setShowCompanyInfo(false);
 
-          // Reset the index to avoid out-of-bounds errors
           if (currentPitchIndex >= pitches.length - 1) {
             setCurrentPitchIndex(0);
           }
@@ -78,7 +77,7 @@ const SharkDashboard = ({ currentUser }) => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2>Shark Dashboard</h2>
+      <h2>Dashboard</h2>
       <h3>Current Pitch:</h3>
 
       {showCompanyInfo ? (
@@ -115,13 +114,6 @@ const SharkDashboard = ({ currentUser }) => {
           {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
         </button>
       </div>
-
-      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
-        Swipe Left (Not Interested)
-      </button>
-      <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
-        {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
-      </button> */}
     </div>
   );
 };

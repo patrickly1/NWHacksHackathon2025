@@ -48,7 +48,7 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
         {/* Home Icon */}
         <Link
           id="home"
-          to="/Home"
+          to="/home"
           onClick={() => handleLinkClick("home")}
           style={{
             backgroundColor: activeLink === "home" ? "grey" : "transparent",

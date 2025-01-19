@@ -8,6 +8,7 @@ import PitcherDashboard from './components/PitcherDashboard';
 import Profile from './components/Profile';
 import Navigation from './components/Navigation';
 import SelectAcc from './components/SelectAcc';
+import Home from './components/Home';
 import "./components/style/App.css";
 
 
@@ -23,6 +24,12 @@ function App() {
         <Route path="/" element={<SelectAcc setCurrentUser={setCurrentUser} />} />
         {/* LoginPage for signup/login */}
         <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser} />} />
+
+        {/* Home Page */}
+        <Route
+          path="/home"
+          element={<Home currentUser={currentUser} />}
+        />
 
         {/* Shark dashboard */}
         <Route
