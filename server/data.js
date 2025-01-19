@@ -176,7 +176,7 @@ const pitches = [
     title: "Warp",
     caption:
       "Discover Warp - A Containers-as-a-Service Platform, high-performance technology that allows you to manage all your cloud resources and containers in one place",
-    videoUrl: "https://www.example.com/video2.mp4",
+    videoUrl: "http://localhost:5002/uploads/0119a.mp4",
     companyInfo:
       "We create sustainable, eco-friendly household products to reduce waste.",
     ownerId: "user3", // John Doe owns this pitch
