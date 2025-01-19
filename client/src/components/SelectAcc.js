@@ -20,7 +20,7 @@ const SelectAcc = ({ setCurrentUser }) => {
         Pitcher
       </button><br></br>
       <button className="selectAccBtn" id="SharkBtn" onClick={() => handleAccountType('shark')}>
-        Shark
+        Funder
       </button>
     </div>
   );

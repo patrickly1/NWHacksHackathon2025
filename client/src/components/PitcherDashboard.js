@@ -59,7 +59,7 @@ const PitcherDashboard = ({ currentUser }) => {
   return (
     <div style={{ padding: '1rem' }}>
       <h1>Create</h1>
-      <p>Curate your posts to attract them sharks!</p>
+      <p>Curate your posts to attract them funders!</p>
       <form onSubmit={handleCreatePitch}>
         <div id='titleDiv'>
           <label>Title: </label>

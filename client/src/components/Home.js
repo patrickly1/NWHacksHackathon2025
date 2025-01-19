@@ -27,7 +27,7 @@ const Home = ({ currentUser }) => {
   }, [currentUser]);
 
   if (!currentUser || currentUser.type !== "shark") {
-    return <div>Please log in as a shark to view this page.</div>;
+    return <div>Please log in as a funder to view this page.</div>;
   }
 
   if (bookmarkedPitches.length === 0) {
