@@ -19,6 +19,7 @@ body {
     height: 874px;
     width: 402px;
     color: white;
+    position: fixed;
 }
 
 #HomeLink {

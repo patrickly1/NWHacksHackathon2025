@@ -35,7 +35,13 @@ const Home = ({ currentUser }) => {
   }
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div style={{ 
+      overflow: 'scroll', 
+      padding: '1rem',
+      height: '774px',
+      scrollbarWidth: 'none',
+
+    }}>
       <h2>Welcome, {currentUser.name}</h2>
       {bookmarkedPitches.map((pitch) => (
         <div
@@ -46,6 +52,7 @@ const Home = ({ currentUser }) => {
             padding: "1rem",
             marginBottom: "1rem",
             borderRadius: "8px",
+            
           }}
         >
           <h4>{pitch.title}</h4>

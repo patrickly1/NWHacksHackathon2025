@@ -80,7 +80,14 @@ const Profile = ({ currentUser }) => {
   const [isHoveredTwo, setIsHoveredTwo] = useState(false);
 
   return (
-    <div style={{}}>
+    <div style={{
+      marginLeft: "-20px", 
+      overflowY:"scroll",
+      overflowX:"hidden",
+      scrollbarWidth: 'none',
+      height: '774px',
+      width: '110%',
+      }}>
       <img src={backgroundPic} style={{ width: "402px" }}></img>
       <div
         style={{
@@ -115,7 +122,7 @@ const Profile = ({ currentUser }) => {
             style={{
               width: "100px",
               height: "100px",
-              borderRadius: "50%", // Ensures the circle shape
+              borderRadius: "100px", // Ensures the circle shape
               marginRight: "1rem",
               objectFit: "cover", // Ensures the image is cropped to fit the circle
             }}
@@ -223,7 +230,7 @@ const Profile = ({ currentUser }) => {
         </div>
       </div>
 
-      <div style={{ paddingLeft: "40px", paddingRight: "40px" }}>
+      <div style={{ marginTop: "-450px", paddingLeft: "40px", paddingRight: "40px" }}>
         <h3 style={{ marginBottom: "5px" }}>About</h3>
         <div
           style={{
