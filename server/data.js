@@ -34,6 +34,7 @@ const users = [
           content:
             "Hi Sarah, I am really impressed with your AI Startup. Let’s connect!",
           timestamp: "2025-01-18T10:00:00Z",
+          title: "Telus",
         },
         {
           pitchId: "pitch5",
@@ -42,6 +43,7 @@ const users = [
           content:
             "Your hiring platform is brilliant! Could you share more details?",
           timestamp: "2025-01-18T12:00:00Z",
+          title: "Fund Em All"
         },
       ], // Messages sent to pitchers
     },

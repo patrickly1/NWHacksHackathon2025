@@ -36,7 +36,7 @@ const Messages = ({ currentUser }) => {
           <li key={index} style={{ marginBottom: '1rem' }}>
             {currentUser.type === 'shark' && (
               <>
-                <strong>Pitch ID:</strong> {message.pitchId} <br />
+                <strong>Company:</strong> {message.title} <br />
                 <strong>Content:</strong> {message.content} <br />
                 <strong>From:</strong> {message.from} <br />
               </>
