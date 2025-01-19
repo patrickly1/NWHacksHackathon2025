@@ -1,76 +1,6 @@
-// import React, { useEffect, useState } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
-
-// const PitcherProfile = () => {
-//   const { pitcherId } = useParams();
-//   const [pitcher, setPitcher] = useState(null);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const fetchPitcher = async () => {
-//       try {
-//         const response = await fetch(`http://localhost:5002/api/users/${pitcherId}`);
-//         if (response.ok) {
-//           const data = await response.json();
-//           setPitcher(data);
-//         } else {
-//           console.error("Failed to fetch pitcher data");
-//         }
-//       } catch (error) {
-//         console.error("Error fetching pitcher:", error);
-//       }
-//     };
-
-//     fetchPitcher();
-//   }, [pitcherId]);
-
-//   if (!pitcher) {
-//     return <div>Loading pitcher profile...</div>;
-//   }
-
-//   return (
-//     <div style={{ padding: "1rem" }}>
-//       <h2>{pitcher.name}'s Profile</h2>
-//       <img
-//         src={pitcher.profilePic || "https://via.placeholder.com/100"}
-//         alt={`${pitcher.name}'s profile`}
-//         style={{
-//           width: "100px",
-//           height: "100px",
-//           borderRadius: "50%",
-//           marginBottom: "1rem",
-//           objectFit: "cover",
-//         }}
-//       />
-//       <p><strong>Location:</strong> {pitcher.location}</p>
-//       <a
-//         href={pitcher.linkedin}
-//         target="_blank"
-//         rel="noopener noreferrer"
-//         style={{ color: "blue", textDecoration: "underline" }}
-//       >
-//         LinkedIn Profile
-//       </a>
-//       <button
-//         onClick={() => navigate("/shark")}
-//         style={{
-//           marginTop: "1rem",
-//           backgroundColor: "lightgrey",
-//           padding: "10px",
-//           borderRadius: "5px",
-//           cursor: "pointer",
-//         }}
-//       >
-//         Back to Explorer
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default PitcherProfile;
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import telus from "../assets/Telus.svg";
 
 const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
   const { pitcherId } = useParams();
@@ -80,7 +10,9 @@ const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
   useEffect(() => {
     const fetchPitcher = async () => {
       try {
-        const response = await fetch(`http://localhost:5002/api/users/${pitcherId}`);
+        const response = await fetch(
+          `http://localhost:5002/api/users/${pitcherId}`
+        );
         if (response.ok) {
           const data = await response.json();
           setPitcher(data);
@@ -139,7 +71,7 @@ const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
     <div style={{ padding: "1rem" }}>
       <h2>{pitcher.name}'s Profile</h2>
       <img
-        src={pitcher.profilePic || "https://via.placeholder.com/100"}
+        src={telus}
         alt={`${pitcher.name}'s profile`}
         style={{
           width: "100px",
@@ -160,15 +92,32 @@ const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
       >
         LinkedIn Profile
       </a>
-      <div style={{ marginTop: "1rem" }}>
+      <div>
+        <h3 style={{ marginBottom: "5px" }}>About</h3>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: "14px",
+            padding: "0px",
+            margin: "",
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <div style={{ display: "flex", marginTop: "1rem" }}>
         <button
           onClick={handleSendMessage}
           style={{
             margin: "0.5rem",
-            backgroundColor: "lightblue",
+            backgroundColor: "#F6F6F6",
             padding: "10px",
-            borderRadius: "5px",
+            borderRadius: "20px",
             cursor: "pointer",
+            borderColor: "#256AE5",
+            color: "#256AE5",
           }}
         >
           Message {pitcher.name}
@@ -179,7 +128,7 @@ const PitcherProfile = ({ currentUser, setRemainingPitches }) => {
             margin: "0.5rem",
             backgroundColor: "lightgrey",
             padding: "10px",
-            borderRadius: "5px",
+            borderRadius: "20px",
             cursor: "pointer",
           }}
         >

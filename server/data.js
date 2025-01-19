@@ -78,7 +78,7 @@ const users = [
   {
     id: "user2",
     type: "pitcher",
-    name: "Sarah Smith",
+    name: "Telus",
     email: "sarah.smith@example.com",
     password: "sarah123",
     profilePic: "empty image",
