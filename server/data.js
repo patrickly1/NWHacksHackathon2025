@@ -81,6 +81,7 @@ const users = [
     {
       id: 'pitch1',
       title: 'Revolutionary AI Startup',
+      caption: 'The future of AI is here!',
       videoUrl: 'https://www.example.com/video1.mp4',
       companyInfo: 'We are developing cutting-edge AI to revolutionize the tech industry.',
       ownerId: 'user2', // Sarah Smith owns this pitch
@@ -100,6 +101,7 @@ const users = [
     {
       id: 'pitch2',
       title: 'Eco-Friendly Product',
+      caption: 'Make the planet a better place!',
       videoUrl: 'https://www.example.com/video2.mp4',
       companyInfo: 'We create sustainable, eco-friendly household products to reduce waste.',
       ownerId: 'user3', // John Doe owns this pitch
@@ -114,6 +116,7 @@ const users = [
     {
       id: 'pitch3',
       title: 'Fitness App for Home Workouts',
+      caption: 'Better mind better body!',
       videoUrl: 'https://www.example.com/video3.mp4',
       companyInfo: 'A fitness app focused on providing customized home workout plans.',
       ownerId: 'user5', // Emily Johnson owns this pitch
@@ -122,6 +125,7 @@ const users = [
     {
       id: 'pitch4',
       title: 'Renewable Energy Solutions',
+      caption: 'Stop global warming',
       videoUrl: 'https://www.example.com/video4.mp4',
       companyInfo: 'We provide innovative solar energy solutions for residential homes.',
       ownerId: 'user3', // John Doe owns this pitch
@@ -130,6 +134,7 @@ const users = [
     {
       id: 'pitch5',
       title: 'AI-Powered Hiring Platform',
+      caption: 'AI was used to generate this caption!',
       videoUrl: 'https://www.example.com/video5.mp4',
       companyInfo: 'An AI-powered platform to streamline the hiring process for startups.',
       ownerId: 'user2', // Sarah Smith owns this pitch
