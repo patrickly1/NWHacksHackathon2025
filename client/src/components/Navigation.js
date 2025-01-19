@@ -11,6 +11,7 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
   };
 
   return (
+Navbar-Styling
     <nav
       style={{
         height: "60px",

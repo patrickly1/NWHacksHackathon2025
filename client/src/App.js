@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import HomePage from './components/LoginPage';
+import LoginPage from './components/LoginPage';
 import SharkDashboard from './components/SharkDashboard';
 import PitcherDashboard from './components/PitcherDashboard';
 import Navigation from './components/Navigation';
+import SelectAcc from './components/SelectAcc';
+import "./components/style/App.css";
+
 
 function App() {
   // We’ll store the current user in App state for simplicity
   const [currentUser, setCurrentUser] = useState(null);
 
   return (
-    <div>
+    <div id='app'>
       <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-        {/* HomePage for signup/login */}
-        <Route path="/" element={<HomePage setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<SelectAcc setCurrentUser={setCurrentUser} />} />
+
+        {/* LoginPage for signup/login */}
+        <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser} />} />
 
         {/* Shark dashboard */}
         <Route
