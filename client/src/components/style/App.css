@@ -13,7 +13,6 @@ body {
     width: 100%;
 }
 
-
 #root{
     height: 874px;
     width: 402px;
@@ -32,3 +31,6 @@ body {
     font-family: 'Poppins', sans-serif;
   }
 
+  h1{
+    font-size: 34px;
+}

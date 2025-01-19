@@ -1,3 +1,143 @@
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import { ReactComponent as ExploreIcon } from "../assets/Icons/ExploreIcon.svg";
+// import { ReactComponent as HomeIcon } from "../assets/Icons/HomeIcon.svg";
+// import { ReactComponent as InboxIcon } from "../assets/Icons/InboxIcon.svg";
+// import { ReactComponent as ProfileIcon } from "../assets/Icons/ProfileIcon.svg";
+
+// const Navigation = ({ currentUser, setCurrentUser }) => {
+//   const [activeLink, setActiveLink] = useState("");
+
+//   const handleLogout = () => {
+//     setCurrentUser(null);
+//   };
+
+//   const handleLinkClick = (linkId) => {
+//     setActiveLink(linkId);
+//   };
+
+//   return (
+//     <nav
+//       style={{
+//         height: "60px",
+//         width: "300px",
+//         position: "fixed",
+//         bottom: "20px",
+//         left: "50%",
+//         transform: "translateX(-50%)",
+//         zIndex: "1000",
+//         backgroundColor: "black",
+//         borderRadius: "100px",
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+//       }}
+//     >
+//       <div
+//         style={{
+//           display: "flex",
+//           width: "100%",
+//           justifyContent: "space-between",
+//           alignItems: "center",
+//           paddingLeft: "40px",
+//           paddingRight: "40px",
+//           backgroundColor: "transparent",
+//         }}
+//       >
+//         {/* Home Icon */}
+//         <Link
+//           id="home"
+//           to="/Home"
+//           onClick={() => handleLinkClick("home")}
+//           style={{
+//             backgroundColor: activeLink === "home" ? "grey" : "transparent",
+//             borderRadius: "50%",
+//             padding: "10px",
+//             display: "inline-block",
+//             width: "30px",
+//           }}
+//         >
+//           <HomeIcon
+//             width="24"
+//             height="24"
+//             fill={activeLink === "home" ? "black" : "white"}
+//           />
+//         </Link>
+
+//         {/* Explore Icon (Same for Sharks and Pitchers) */}
+//         <Link
+//           id="explore"
+//           to="/shark"
+//           onClick={() => handleLinkClick("explore")}
+//           style={{
+//             backgroundColor: activeLink === "explore" ? "grey" : "transparent",
+//             borderRadius: "50%",
+//             padding: "10px",
+//             display: "inline-block",
+//             width: "30px",
+//           }}
+//         >
+//           <ExploreIcon
+//             width="24"
+//             height="24"
+//             fill={activeLink === "explore" ? "black" : "white"}
+//           />
+//         </Link>
+
+//         {/* Messages Icon */}
+//         {currentUser && (
+//           <Link
+//             id="messages"
+//             to="/messages"
+//             onClick={() => handleLinkClick("messages")}
+//             style={{
+//               backgroundColor:
+//                 activeLink === "messages" ? "grey" : "transparent",
+//               borderRadius: "50%",
+//               padding: "10px",
+//               display: "inline-block",
+//               width: "30px",
+//             }}
+//           >
+//             <InboxIcon
+//               width="24"
+//               height="24"
+//               fill={activeLink === "messages" ? "black" : "white"}
+//             />
+//           </Link>
+//         )}
+
+//         {/* Profile Icon */}
+//         {currentUser && (
+//           <Link
+//             id="profile"
+//             to="/profile"
+//             onClick={() => handleLinkClick("profile")}
+//             style={{
+//               backgroundColor:
+//                 activeLink === "profile" ? "grey" : "transparent",
+//               borderRadius: "50%",
+//               padding: "10px",
+//               display: "inline-block",
+//               width: "30px",
+//             }}
+//           >
+//             <ProfileIcon
+//               width="24"
+//               height="24"
+//               fill={activeLink === "profile" ? "black" : "white"}
+//             />
+//           </Link>
+//         )}
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navigation;
+
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as ExploreIcon } from "../assets/Icons/ExploreIcon.svg";
@@ -10,6 +150,7 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
 
   const handleLogout = () => {
     setCurrentUser(null);
+    setActiveLink(""); // Reset active link on logout
   };
 
   const handleLinkClick = (linkId) => {
@@ -20,18 +161,18 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
     <nav
       style={{
         height: "60px",
-        width: "300px",
+        width: "320px",
         position: "fixed",
-        bottom: "20px", // Position at the bottom of the page with some margin
+        bottom: "20px", // Bottom placement
         left: "50%", // Center horizontally
-        transform: "translateX(-50%)", // Center alignment correction
+        transform: "translateX(-50%)",
         zIndex: "1000",
         backgroundColor: "black",
         borderRadius: "100px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Optional shadow for better visibility
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
       }}
     >
       <div
@@ -45,9 +186,10 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
           backgroundColor: "transparent",
         }}
       >
+        {/* Home Icon */}
         <Link
           id="home"
-          to="/home"
+          to="/Home"
           onClick={() => handleLinkClick("home")}
           style={{
             backgroundColor: activeLink === "home" ? "grey" : "transparent",
@@ -63,13 +205,14 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
             fill={activeLink === "home" ? "black" : "white"}
           />
         </Link>
+
+        {/* Explore Icon */}
         <Link
-          id="dashboard"
-          to="/dashboard"
-          onClick={() => handleLinkClick("dashboard")}
+          id="explore"
+          to="/shark"
+          onClick={() => handleLinkClick("explore")}
           style={{
-            backgroundColor:
-              activeLink === "dashboard" ? "grey" : "transparent",
+            backgroundColor: activeLink === "explore" ? "grey" : "transparent",
             borderRadius: "50%",
             padding: "10px",
             display: "inline-block",
@@ -79,45 +222,55 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
           <ExploreIcon
             width="24"
             height="24"
-            fill={activeLink === "dashboard" ? "black" : "white"}
+            fill={activeLink === "explore" ? "black" : "white"}
           />
         </Link>
-        <Link
-          id="messages"
-          to="/messages"
-          onClick={() => handleLinkClick("messages")}
-          style={{
-            backgroundColor: activeLink === "messages" ? "grey" : "transparent",
-            borderRadius: "50%",
-            padding: "10px",
-            display: "inline-block",
-            width: "30px",
-          }}
-        >
-          <InboxIcon
-            width="24"
-            height="24"
-            fill={activeLink === "messages" ? "black" : "white"}
-          />
-        </Link>
-        <Link
-          id="profile"
-          to="/profile"
-          onClick={() => handleLinkClick("profile")}
-          style={{
-            backgroundColor: activeLink === "profile" ? "grey" : "transparent",
-            borderRadius: "50%",
-            padding: "10px",
-            display: "inline-block",
-            width: "30px",
-          }}
-        >
-          <ProfileIcon
-            width="24"
-            height="24"
-            fill={activeLink === "profile" ? "black" : "white"}
-          />
-        </Link>
+
+        {/* Messages Icon */}
+        {currentUser && (
+          <Link
+            id="messages"
+            to="/messages"
+            onClick={() => handleLinkClick("messages")}
+            style={{
+              backgroundColor:
+                activeLink === "messages" ? "grey" : "transparent",
+              borderRadius: "50%",
+              padding: "10px",
+              display: "inline-block",
+              width: "30px",
+            }}
+          >
+            <InboxIcon
+              width="24"
+              height="24"
+              fill={activeLink === "messages" ? "black" : "white"}
+            />
+          </Link>
+        )}
+
+        {/* Profile Icon */}
+        {currentUser && (
+          <Link
+            id="profile"
+            to="/profile"
+            onClick={() => handleLinkClick("profile")}
+            style={{
+              backgroundColor:
+                activeLink === "profile" ? "grey" : "transparent",
+              borderRadius: "50%",
+              padding: "10px",
+              display: "inline-block",
+              width: "30px",
+            }}
+          >
+            <ProfileIcon
+              width="24"
+              height="24"
+              fill={activeLink === "profile" ? "black" : "white"}
+            />
+          </Link>
+        )}
       </div>
     </nav>
   );

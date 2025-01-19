@@ -1,5 +1,3 @@
-/* SharkDashboard.css */
-
 .dashboard-container {
     padding: 1rem;
     min-height: 100vh;
@@ -10,7 +8,6 @@
   .dashboard-title {
     font-size: 2rem;
   }
-
   .button-container {
     height: 100%;
     width: 100%;
@@ -31,7 +28,6 @@
     font-size: 1rem;
     z-index: 1000; /* Ensure it's on top */
   }
-
   #swipeUpBtn:hover {
     background-color: gray;
     opacity: 0.2;
@@ -51,9 +47,7 @@
     font-size: 1rem;
     z-index: 1000; /* Ensure it's on top */
   }
-
   #swipeRightBtn:hover {
     background-color: gray;
     opacity: 0.2;
   }
-  
