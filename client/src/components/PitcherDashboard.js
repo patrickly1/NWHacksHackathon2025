@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 const PitcherDashboard = ({ currentUser }) => {
   const [title, setTitle] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
-  const [companyInfo, setCompanyInfo] = useState('');
-  const [inbox, setInbox] = useState([]);
+  const [companyInfo, setCompanyInfo] = useState([]);
+  const [pitches, setPitches] = useState([]);
 
   useEffect(() => {
     if (currentUser && currentUser.type === 'pitcher') {
@@ -16,7 +16,7 @@ const PitcherDashboard = ({ currentUser }) => {
     try {
       const response = await fetch(`http://localhost:5002/api/inbox/${currentUser.id}`);
       const data = await response.json();
-      setInbox(data.pitches);
+      setPitches(data.pitches || []); // Set pitches to an empty array if undefined
     } catch (err) {
       console.error(err);
     }
@@ -44,27 +44,7 @@ const PitcherDashboard = ({ currentUser }) => {
         setTitle('');
         setVideoUrl('');
         setCompanyInfo('');
-      } else {
-        const data = await response.json();
-        alert(data.message);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const handleMessageAction = async (pitchId, messageId, action) => {
-    try {
-      const response = await fetch('http://localhost:5002/api/messages/handle', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pitchId, messageId, action }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        // Refresh inbox
-        fetchInbox();
+        fetchInbox(); // Refresh pitches after creating a new one
       } else {
         const data = await response.json();
         alert(data.message);
@@ -107,31 +87,13 @@ const PitcherDashboard = ({ currentUser }) => {
 
       <hr />
 
-      <h3>Inbox (Messages)</h3>
-      {inbox.length === 0 && <div>No pitches yet.</div>}
-      {inbox.map((pitch) => (
+      {/* <h3>Your Pitches</h3>
+      {pitches.length === 0 && <div>No pitches yet.</div>}
+      {pitches.map((pitch) => (
         <div key={pitch.id} style={{ border: '1px solid #ccc', margin: '1rem 0' }}>
           <strong>Pitch Title:</strong> {pitch.title}
-          <div>
-            <strong>Messages:</strong>
-            {pitch.messages.length === 0 && <p>No messages yet.</p>}
-            {pitch.messages.map((msg) => (
-              <div key={msg.id} style={{ marginLeft: '1rem' }}>
-                <p>
-                  <strong>From (Shark ID):</strong> {msg.from} <br />
-                  <strong>Message:</strong> {msg.content}
-                </p>
-                <button onClick={() => handleMessageAction(pitch.id, msg.id, 'accept')}>
-                  Accept
-                </button>
-                <button onClick={() => handleMessageAction(pitch.id, msg.id, 'delete')}>
-                  Delete
-                </button>
-              </div>
-            ))}
-          </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
