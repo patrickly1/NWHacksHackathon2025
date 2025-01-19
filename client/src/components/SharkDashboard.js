@@ -197,6 +197,7 @@ const SharkDashboard = ({ currentUser }) => {
     //add bookmark
   };
 
+
   const handleSendMessage = async (pitchId) => {
     if (!showCompanyInfo) return;
 
@@ -240,34 +241,65 @@ const SharkDashboard = ({ currentUser }) => {
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>Shark Dashboard</h2>
-      <h3>Current Pitch:</h3>
-      <div>
-        <strong>Title:</strong> {currentPitch.title}
-      </div>
-      <div>
-        <strong>Caption:</strong> {currentPitch.caption}
-      </div>
-      <div>
-        <strong>Video URL:</strong> {currentPitch.videoUrl}
-      </div>
+
+      {showProfile ? (
+        <PitcherProfile
+          pitcher={currentPitch.owner} // Assuming each pitch has an `owner` object
+          onSendMessage={handleSendMessage}
+          onSwipeLeft={handleSwipeLeft}
+          onSwipeDown={handleSwipeDown}
+        />
+      ) : (
+        <div>
+          <h2>Shark Dashboard</h2>
+          <h3>Current Pitch:</h3>
+          <div>
+            <strong>Title:</strong> {currentPitch.title}
+          </div>
+          <div>
+            <strong>Caption:</strong> {currentPitch.caption}
+          </div>
+          <div>
+            <strong>Video URL:</strong> {currentPitch.videoUrl}
+          </div>
+          <div className="button-container">
+            <button
+              onClick={handleSwipeDown}
+              style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
+            >
+              Next Pitch
+            </button>
+            <button
+              onClick={handleSwipeRight}
+              style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
+            >
+              View Pitcher Profile
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="button-container">
-        <button
-          onClick={handleSwipeDown}
-          style={{ margin: "0.5rem", backgroundColor: "lightgreen" }}
-        >
-          Swipe Down
+        <button id="swipeUpBtn" onClick={handleSwipeDown} style={{ margin: '0.5rem' }}>
+          Swipe Up
         </button>
-        <button
-          onClick={handleViewProfile}
-          style={{ margin: "0.5rem", backgroundColor: "lightblue" }}
-        >
-          View Pitcher Profile
+        <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
+          {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+
         </button>
         <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
           Swipe left
         </button>
       </div>
+
+
+      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+        Swipe Left (Not Interested)
+      </button>
+      <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
+        {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
+      </button> */}
+
     </div>
   );
 };

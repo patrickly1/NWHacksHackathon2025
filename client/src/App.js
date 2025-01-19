@@ -88,9 +88,11 @@ function App() {
 
   return (
 
+
     <div id='app'>
       {currentUser && <Navigation currentUser={currentUser} setCurrentUser={setCurrentUser} />}
       
+
 
       <Routes>
         {/* Home Page */}
