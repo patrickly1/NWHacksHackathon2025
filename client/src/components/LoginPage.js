@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import "./style/LoginPage.css";
 
 
@@ -8,6 +9,9 @@ const LoginPage = ({ setCurrentUser }) => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('shark'); // default
   const [isRegister, setIsRegister] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +26,8 @@ const LoginPage = ({ setCurrentUser }) => {
         const data = await response.json();
         if (response.ok) {
           setCurrentUser(data.user);
+          setShowNavbar(true);
+          navigate('/shark');  
         } else {
           alert(data.message);
         }
@@ -39,6 +45,8 @@ const LoginPage = ({ setCurrentUser }) => {
         const data = await response.json();
         if (response.ok) {
           setCurrentUser(data.user);
+          setShowNavbar(true); 
+          navigate('/shark');
         } else {
           alert(data.message);
         }
@@ -66,13 +74,6 @@ const LoginPage = ({ setCurrentUser }) => {
                 placeholder='Enter name'
               />
             </div>
-            {/* <div>
-              <label>Account Type: </label>
-              <select value={type} onChange={(e) => setType(e.target.value)}>
-                <option value="shark">Shark</option>
-                <option value="pitcher">Pitcher</option>
-              </select>
-            </div> */}
           </>
         )}
 

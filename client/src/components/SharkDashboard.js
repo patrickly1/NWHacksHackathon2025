@@ -205,8 +205,11 @@ const SharkDashboard = ({ currentUser }) => {
     setShowProfile(true); // Show the pitcher profile
   };
 
-  const handleSendMessage = async (pitcherId) => {
-    const message = prompt("Enter your message:");
+
+  const handleSendMessage = async (pitchId) => {
+    if (!showCompanyInfo) return;
+
+    const message = prompt('Enter your message to the pitcher:');
     if (message) {
       try {
         const response = await fetch("http://localhost:5002/api/messages", {
@@ -277,6 +280,25 @@ const SharkDashboard = ({ currentUser }) => {
           </div>
         </div>
       )}
+
+      <div className="button-container">
+        <button id="swipeUpBtn" onClick={handleSwipeDown} style={{ margin: '0.5rem' }}>
+          Swipe Up
+        </button>
+        <button id="swipeRightBtn" onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
+          {showCompanyInfo ? 'Back to Video' : 'Swipe Right'}
+        </button>
+        <button id="swipeLeftBtn" onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+          Swipe left
+        </button>
+      </div>
+
+      {/* <button onClick={handleSwipeLeft} style={{ margin: '0.5rem' }}>
+        Swipe Left (Not Interested)
+      </button>
+      <button onClick={handleSwipeRight} style={{ margin: '0.5rem' }}>
+        {showCompanyInfo ? 'Back to Video' : 'View Company Info'}
+      </button> */}
     </div>
   );
 };
